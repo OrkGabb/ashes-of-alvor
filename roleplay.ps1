@@ -66,7 +66,7 @@ function Get-SettingSpec {
 }
 
 function Save-Config {
-    $lines = @('# Configuração do roleplay. Edite pelo menu do Iniciar-Roleplay.bat ou aqui mesmo.')
+    $lines = @('# Configuração do roleplay. Edite pelo menu do Start-Roleplay.bat ou aqui mesmo.')
     foreach ($key in $script:cfg.Keys) { $lines += "$key=$($script:cfg[$key])" }
     Set-Content -LiteralPath $configPath -Value $lines -Encoding UTF8
 }
@@ -326,7 +326,7 @@ function Choose-Model {
 
 function Get-StoryContext {
     $parts = @()
-    $geminiPath = Join-Path $PSScriptRoot 'GEMINI.md'
+    $geminiPath = Join-Path $PSScriptRoot 'NARRATOR.md'
     if (Test-Path -LiteralPath $geminiPath) {
         $parts += (Get-Content -LiteralPath $geminiPath -Raw -Encoding UTF8).Trim()
     }

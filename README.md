@@ -51,7 +51,7 @@ Content: 10 NPCs plus background extras, 14 quests, 14 collectibles, 29 items an
 ## Running it
 
 ```bat
-Iniciar-Jogo3D.bat
+Start-Game3D.bat
 ```
 
 The script builds `public/assets/city/city.json` if it is missing, starts `server.py` on
@@ -63,7 +63,7 @@ python server.py --motor teste :: no model, deterministic narrator
 ```
 
 There is also a text-only mode, the project's original prototype:
-`Jogar-Luna.bat` / `python play.py`. `Iniciar-Roleplay.bat` starts the PowerShell launcher
+`Play-Luna.bat` / `python play.py`. `Start-Roleplay.bat` starts the PowerShell launcher
 for LM Studio.
 
 Before the first session you can describe your character in `historias/Isekai/jogador.txt`.
@@ -98,7 +98,7 @@ for %f in (test_*.py) do python %f
 server.py        HTTP + SSE backend, prompt assembly, state parsing
 jogo.py          authoritative game state (quests, inventory, combat)
 play.py          narrator engine shared by the terminal and the 3D client
-GEMINI.md        narrator rules (runtime prompt, pt-BR)
+NARRATOR.md      narrator rules (runtime system prompt; the model answers in pt-BR)
 historias/       world setting, opening scene, player sheet (pt-BR)
 public/          the 3D client, game data (JSON), art and audio
 tools/           city builder, zone scripts, art/texture/SFX generators

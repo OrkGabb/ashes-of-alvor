@@ -3,7 +3,7 @@
 
 Fluxo de cada turno (1 única chamada ao LLM com streaming em tempo real):
   1. o jogador digita sua ação ou fala no terminal;
-  2. o sistema monta o prompt combinando GEMINI.md + arquivos da história (cenario.txt,
+  2. o sistema monta o prompt combinando NARRATOR.md + arquivos da história (cenario.txt,
      jogador.txt, memoria.txt, abertura.txt) + personas da Luna e dos NPCs (ex.: Bram,
      dono da taverna Lanterna Torta) + estado atual de humor, relação e lembranças;
   3. o modelo narra a cena em streaming imediato (interpretando o mundo, os NPCs e a
@@ -699,7 +699,7 @@ Isto é uma CONVERSA, não uma cena narrada. Ignore aqui a regra de narrar em se
 
 
 def montar_sistema_narrador(cena: Cena, contexto: dict[str, Any] | None = None) -> str:
-    gemini = ler_texto(ROOT / "GEMINI.md")
+    gemini = ler_texto(ROOT / "NARRATOR.md")
     r = cena.relacao.d
     estagio_nome, estagio_ritmo = cena.relacao.estagio()
     npcs = r.get("npcs") or {}

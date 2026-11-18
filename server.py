@@ -6,7 +6,7 @@ Servidor Backend HTTP + SSE (Server-Sent Events) para o RPG 3D 'Cinzas de Alvor'
 - Expõe POST /api/chat com streaming em tempo real via Server-Sent Events (SSE) utilizando o CLI 'agy'
   (gemini-4-hydrogen-low; o roteador play.escolher_modelo sobe para gemini-4-hydrogen-medium por turno quando a
   conversa pede raciocínio, salvo modelo/esforço forçado), injetando o contexto de 'historias/Isekai/' e as
-  regras do 'GEMINI.md'.
+  regras do 'NARRATOR.md'.
 - Realiza parsing transparente da tag <estado>{...}</estado> no backend via FiltroStream e
   extrair_narracao_e_estado, persistindo afeto (proximidade, confiança, tensão slow-burn),
   humor/crenças (humor, intenção, Bram/NPCs) e memória (relacao.json + memoria.txt) sem exibir
