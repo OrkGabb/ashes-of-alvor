@@ -1,0 +1,381 @@
+{
+  "versao": 1,
+  "cobre_inicial": 3,
+  "inventario_inicial": { "espada_curta": 1, "cajado_aprendiz": 1 },
+  "equipado_inicial": { "arma": "espada_curta" },
+  "missoes": {
+    "lenha_bram": {
+      "titulo": "Lenha para o Bram",
+      "doador": "bram",
+      "auto_aceitar": true,
+      "resumo": "Bram troca uma tigela de ensopado por um feixe de lenha do pátio dos fundos da estalagem.",
+      "etapas": [
+        {
+          "id": "buscar",
+          "texto": "Buscar um feixe de lenha no pátio dos fundos da estalagem em troca do ensopado",
+          "objetivo": { "tipo": "coletar", "item": "feixe_lenha", "qtd": 1 }
+        },
+        {
+          "id": "entregar",
+          "texto": "Levar o feixe de lenha até Bram, no balcão",
+          "objetivo": { "tipo": "entregar", "item": "feixe_lenha", "qtd": 1, "npc": "bram" },
+          "ao_concluir": {
+            "dar": { "ensopado": 1 },
+            "cobre": 5,
+            "confianca": { "bram": 0.25 },
+            "desbloqueio": "ensopado",
+            "status_npc": { "bram": "satisfeito com a lenha entregue; serviu o ensopado prometido e passou a confiar mais no forasteiro" },
+            "lembranca": "Entregou a Bram um feixe de lenha cortada no balcão; ganhou a confiança dele e uma tigela de ensopado.",
+            "narrar": "O jogador acaba de apoiar o feixe de lenha cortada sobre o balcão. Bram confere as achas, fica satisfeito, serve a tigela de ensopado prometida e ainda empurra cinco moedas de cobre pelo balcão; a confiança dele no forasteiro aumenta. Narre essa reação de Bram (e, se fizer sentido, a da Luna)."
+          }
+        }
+      ],
+      "texto_concluida": "Ensopado liberado — Bram passou a confiar mais em você"
+    },
+    "registro_guilda": {
+      "titulo": "Registro na Guilda",
+      "doador": "maren",
+      "resumo": "Todo Desperto precisa de um Cartão de Aventureiro. A taxa de registro da Guilda é de 10 cobres.",
+      "etapas": [
+        {
+          "id": "pagar",
+          "texto": "Pagar a taxa de registro (10 cobres) à Maren, no balcão da Guilda",
+          "objetivo": { "tipo": "pagar", "cobre": 10, "npc": "maren" },
+          "ao_concluir": {
+            "dar": { "cartao_guilda": 1 },
+            "confianca": { "maren": 0.15 },
+            "lembranca": "Registrou-se na Guilda dos Aventureiros com a Maren e recebeu o Cartão de Aventureiro Rank F.",
+            "narrar": "O jogador paga os 10 cobres da taxa. Maren carimba o registro, encosta uma placa de bronze num cristal de leitura que brilha azul e entrega o Cartão de Aventureiro Rank F, com o discurso de boas-vindas da Guilda feito com um sorriso profissional (e um aviso sobre os contratos do quadro)."
+          }
+        }
+      ]
+    },
+    "paes_guarda": {
+      "titulo": "Pães para a Guarda",
+      "doador": "rosa",
+      "resumo": "Dona Rosa precisa que alguém leve a cesta de pães da guarda até o Capitão Aldric, no Portão Sul.",
+      "ao_aceitar": { "dar": { "cesta_paes": 1 } },
+      "etapas": [
+        {
+          "id": "levar",
+          "texto": "Levar a cesta de pães ao Capitão Aldric, no Portão Sul",
+          "objetivo": { "tipo": "entregar", "item": "cesta_paes", "qtd": 1, "npc": "aldric" },
+          "ao_concluir": {
+            "dar": { "pao_centeio": 2 },
+            "cobre": 8,
+            "confianca": { "aldric": 0.15, "rosa": 0.1 },
+            "lembranca": "Levou a cesta de pães da Rosa até o Capitão Aldric no Portão Sul.",
+            "narrar": "O jogador entrega a cesta de pães da Dona Rosa ao Capitão Aldric no Portão Sul. Aldric confere a cesta, distribui um pão aos guardas, paga oito cobres pelo serviço e devolve dois pães de centeio de agradecimento."
+          }
+        }
+      ]
+    },
+    "ervas_sera": {
+      "titulo": "Erva-de-Brasa para a Botica",
+      "doador": "sera",
+      "resumo": "Sera precisa de três ramos de Erva-de-Brasa do Jardim do Templo para o chá que aquece os guardas.",
+      "etapas": [
+        {
+          "id": "colher",
+          "texto": "Colher 3 ramos de Erva-de-Brasa no Jardim do Templo",
+          "objetivo": { "tipo": "coletar", "item": "erva_brasa", "qtd": 3 }
+        },
+        {
+          "id": "entregar",
+          "texto": "Levar as 3 Ervas-de-Brasa para a Sera, na Botica",
+          "objetivo": { "tipo": "entregar", "item": "erva_brasa", "qtd": 3, "npc": "sera" },
+          "ao_concluir": {
+            "dar": { "cha_brasa": 2 },
+            "cobre": 6,
+            "confianca": { "sera": 0.2 },
+            "lembranca": "Colheu Erva-de-Brasa no Jardim do Templo para a Sera, da Botica.",
+            "narrar": "O jogador entrega três ramos de Erva-de-Brasa à Sera. Ela examina as folhas contra a luz, empolgada, explica rapidamente como o chá é preparado, paga seis cobres e dá dois frascos de chá de presente."
+          }
+        }
+      ]
+    },
+    "gato_tilly": {
+      "titulo": "Cadê o Bolinho?",
+      "doador": "tilly",
+      "resumo": "O gato da Tilly, Bolinho, fugiu com medo da chuva. Ela acha que ele se escondeu em algum beco da cidade.",
+      "etapas": [
+        {
+          "id": "achar",
+          "texto": "Procurar o Bolinho, o gato laranja da Tilly, pelos becos da cidade",
+          "objetivo": { "tipo": "coletar", "item": "bolinho", "qtd": 1 }
+        },
+        {
+          "id": "devolver",
+          "texto": "Devolver o Bolinho para a Tilly",
+          "objetivo": { "tipo": "entregar", "item": "bolinho", "qtd": 1, "npc": "tilly" },
+          "ao_concluir": {
+            "dar": { "amuleto_trevo": 1, "pao_mel": 2 },
+            "confianca": { "tilly": 0.3, "rosa": 0.15 },
+            "lembranca": "Achou o Bolinho, o gato da Tilly, e ganhou dela um amuleto de trevo.",
+            "narrar": "O jogador devolve o gato Bolinho, molhado e emburrado, para a pequena Tilly. Ela abraça o gato, agradece de um jeito atrapalhado e dá ao jogador um amuleto de trevo feito à mão (e dois pãezinhos de mel que 'pegou emprestado' da padaria da mãe)."
+          }
+        }
+      ]
+    },
+    "lente_darian": {
+      "titulo": "Contrato: A Lente do Velho Darian",
+      "doador": "darian",
+      "requer_item": "cartao_guilda",
+      "resumo": "Contrato do quadro da Guilda: buscar a lente de avaliação do Darian na forja do Torvin e devolvê-la inteira.",
+      "etapas": [
+        {
+          "id": "buscar",
+          "texto": "Buscar a lente consertada com o Torvin, na Forja",
+          "objetivo": { "tipo": "falar", "npc": "torvin" },
+          "ao_concluir": {
+            "dar": { "lente_darian": 1 },
+            "confianca": { "torvin": 0.1 },
+            "narrar": "Torvin, o ferreiro anão, entrega ao jogador a lente de cristal com a armação de latão refeita, resmungando sobre velhos que derrubam ferramentas caras e pedindo cuidado redobrado no caminho."
+          }
+        },
+        {
+          "id": "devolver",
+          "texto": "Devolver a lente ao Velho Darian, na oficina",
+          "objetivo": { "tipo": "entregar", "item": "lente_darian", "qtd": 1, "npc": "darian" },
+          "ao_concluir": {
+            "cobre": 15,
+            "confianca": { "darian": 0.25 },
+            "lembranca": "Cumpriu o contrato da Guilda e devolveu a lente de avaliação ao Velho Darian.",
+            "narrar": "O jogador devolve a lente ao Velho Darian. Ele encaixa a lente no olho, examina tudo à volta com um sorriso satisfeito, conta quinze cobres devagar (tentando pechinchar no meio) e comenta que o jogador tem mãos firmes para um Desperto."
+          }
+        }
+      ]
+    },
+    "mapa_capital": {
+      "titulo": "O Mapa da Capital",
+      "doador": "luna",
+      "requer_missao": "lenha_bram",
+      "resumo": "Luna quer completar o mapa de Cinzas de Alvor e propôs um trato: você conhece a cidade, ela anota tudo.",
+      "etapas": [
+        {
+          "id": "explorar",
+          "texto": "Conhecer os marcos da capital: Praça do Marco, Guilda, Templo, Jardim, Mercado e Portão Sul",
+          "objetivo": { "tipo": "visitar", "marcos": ["Praca", "Guilda", "Templo", "Jardim", "Mercado", "PortaoSul"] }
+        },
+        {
+          "id": "contar",
+          "texto": "Contar para a Luna o que você viu pela cidade",
+          "objetivo": { "tipo": "falar", "npc": "luna" },
+          "ao_concluir": {
+            "dar": { "mapa_luna": 1 },
+            "relacao_luna": { "proximidade": 0.05, "confianca": 0.05 },
+            "lembranca": "Percorreu a capital e ajudou a Luna a completar o mapa de Cinzas de Alvor; ela deu uma cópia rabiscada de presente.",
+            "narrar": "O jogador conta à Luna tudo o que viu pela cidade. Ela anota rápido no caderno de couro, corrige uma rua, ri de algum detalhe e, no fim, arranca uma cópia do mapa e entrega ao jogador, meio sem jeito."
+          }
+        }
+      ]
+    },
+    "patrulha_sul": {
+      "titulo": "Contrato: Patrulha da Estrada Sul",
+      "doador": "aldric",
+      "requer_item": "cartao_guilda",
+      "resumo": "Contrato da Guilda: patrulhar a Estrada Velha ao sul do Portão Sul, verificar o Acampamento e recuperar a carga caída de cristal.",
+      "etapas": [
+        {
+          "id": "explorar",
+          "texto": "Patrulhar a Estrada Velha e o Acampamento dos Aventureiros ao sul do Portão Sul",
+          "objetivo": { "tipo": "visitar", "marcos": ["EstradaVelha", "Acampamento"] }
+        },
+        {
+          "id": "recuperar",
+          "texto": "Recuperar o Cristal Bruto do Ribeirão junto à carroça na Estrada Velha",
+          "objetivo": { "tipo": "coletar", "item": "minerio_alvor", "qtd": 1 }
+        },
+        {
+          "id": "entregar",
+          "texto": "Entregar o Cristal Bruto do Ribeirão ao Capitão Aldric, no Portão Sul",
+          "objetivo": { "tipo": "entregar", "item": "minerio_alvor", "qtd": 1, "npc": "aldric" },
+          "ao_concluir": {
+            "cobre": 18,
+            "confianca": { "aldric": 0.25 },
+            "lembranca": "Patrulhou a Estrada Velha e o Acampamento ao sul, recuperou o Cristal Bruto do Ribeirão e o entregou ao Capitão Aldric.",
+            "narrar": "O jogador entrega ao Capitão Aldric o Cristal Bruto do Ribeirão recuperado na Estrada Velha. Aldric confere o cristal, anota o relatório da patrulha até o Acampamento, paga dezoito cobres pelo contrato da Guilda e passa a respeitar muito mais a palavra do Desperto."
+          }
+        }
+      ]
+    },
+    "fungos_mata": {
+      "titulo": "Cogumelos-da-Névoa da Mata",
+      "doador": "sera",
+      "requer_missao": "ervas_sera",
+      "resumo": "Sera quer testar uma nova fórmula de tônico usando três Cogumelos-da-Névoa da Mata Cinzenta, ao sul da muralha.",
+      "etapas": [
+        {
+          "id": "colher",
+          "texto": "Colher 3 Cogumelos-da-Névoa sob a névoa da Mata Cinzenta",
+          "objetivo": { "tipo": "coletar", "item": "cogumelo_azul", "qtd": 3 }
+        },
+        {
+          "id": "entregar",
+          "texto": "Entregar os 3 Cogumelos-da-Névoa para a Sera, na Botica",
+          "objetivo": { "tipo": "entregar", "item": "cogumelo_azul", "qtd": 3, "npc": "sera" },
+          "ao_concluir": {
+            "cobre": 14,
+            "dar": { "pocao_vigor": 2 },
+            "confianca": { "sera": 0.2 },
+            "lembranca": "Colheu três Cogumelos-da-Névoa na Mata Cinzenta para a Sera e recebeu duas Poções de Vigor.",
+            "narrar": "O jogador entrega três Cogumelos-da-Névoa bioluminescentes à Sera. Ela quase derruba um frasco de tanta empolgação, analisa os esporos azulados na luz da bancada, paga quatorze cobres e entrega duas Poções de Vigor como agradecimento."
+          }
+        }
+      ]
+    },
+    "segredo_marco": {
+      "titulo": "O Segredo do Primeiro Marco",
+      "doador": "luna",
+      "requer_missao": "mapa_capital",
+      "resumo": "Luna suspeita que as ruínas ao sul da muralha guardam a origem do Marco da Praça. Ela quer explorar a Mata Cinzenta, as Ruínas do Marco e o Ribeirão.",
+      "etapas": [
+        {
+          "id": "descobrir",
+          "texto": "Explorar a Mata Cinzenta, as Ruínas do Marco Antigo e o Ribeirão ao sul",
+          "objetivo": { "tipo": "visitar", "marcos": ["MataCinzenta", "RuinasMarco", "Ribeirao"] }
+        },
+        {
+          "id": "reliquia",
+          "texto": "Recolher o Fragmento do Primeiro Marco junto às ruínas antigas",
+          "objetivo": { "tipo": "coletar", "item": "fragmento_runa", "qtd": 1 }
+        },
+        {
+          "id": "revelar",
+          "texto": "Levar o Fragmento do Primeiro Marco para a Luna e desvendar as runas",
+          "objetivo": { "tipo": "entregar", "item": "fragmento_runa", "qtd": 1, "npc": "luna" },
+          "ao_concluir": {
+            "dar": { "amuleto_aurora": 1 },
+            "cobre": 25,
+            "relacao_luna": { "proximidade": 0.05, "confianca": 0.05 },
+            "lembranca": "Desbravou a Mata Cinzenta, as Ruínas do Marco Antigo e o Ribeirão, trouxe o Fragmento do Primeiro Marco para a Luna e recebeu dela o Amuleto da Aurora Ancestral.",
+            "narrar": "O jogador entrega o Fragmento do Primeiro Marco à Luna. Ela encosta a pedra rúnica no próprio caderno e observa o brilho azul pulsar em resposta, confirmando o segredo que suspeitava sobre o Marco antigo. Mais próxima e sincera, Luna paga vinte e cinco cobres pelo achado e confia ao jogador o Amuleto da Aurora Ancestral."
+          }
+        }
+      ]
+    },
+    "caca_javalis": {
+      "titulo": "Contrato de Caça: Javalis da Estrada Velha",
+      "doador": "maren",
+      "requer_item": "cartao_guilda",
+      "resumo": "Contrato de caça do quadro da Guilda: javalis selvagens andam derrubando as cercas e assustando as carroças na Estrada Velha. A Guilda paga por quatro abatidos.",
+      "etapas": [
+        {
+          "id": "cacar",
+          "texto": "Abater javalis selvagens na Estrada Velha, ao sul do Portão Sul",
+          "objetivo": { "tipo": "abater", "alvo": "javali", "qtd": 4 }
+        },
+        {
+          "id": "relatar",
+          "texto": "Relatar a caça dos javalis à Maren, no balcão da Guilda",
+          "objetivo": { "tipo": "falar", "npc": "maren" },
+          "ao_concluir": {
+            "cobre": 12,
+            "dar": { "pocao_vida": 1 },
+            "confianca": { "maren": 0.1 },
+            "lembranca": "Cumpriu o contrato de caça da Guilda e abateu quatro javalis selvagens na Estrada Velha.",
+            "narrar": "O jogador relata à Maren a caça dos javalis da Estrada Velha. Ela confere o registro no cristal de leitura, carimba o contrato como cumprido, paga doze cobres e entrega uma Poção de Vida da reserva da Guilda, com um elogio profissional e um lembrete de que a Mata Cinzenta é bem pior."
+          }
+        }
+      ]
+    },
+    "caca_slimes": {
+      "titulo": "Contrato de Caça: Slimes do Ribeirão",
+      "doador": "maren",
+      "requer_item": "cartao_guilda",
+      "resumo": "Contrato de caça do quadro da Guilda: slimes entupiram as margens do Ribeirão e estão corroendo as peneiras dos garimpeiros de cristal. A Guilda paga por cinco dissolvidos.",
+      "etapas": [
+        {
+          "id": "cacar",
+          "texto": "Dissolver slimes nas margens do Ribeirão",
+          "objetivo": { "tipo": "abater", "alvo": "slime", "qtd": 5 }
+        },
+        {
+          "id": "relatar",
+          "texto": "Relatar a limpeza do Ribeirão à Maren, no balcão da Guilda",
+          "objetivo": { "tipo": "falar", "npc": "maren" },
+          "ao_concluir": {
+            "cobre": 10,
+            "dar": { "pocao_mana": 1 },
+            "confianca": { "maren": 0.1 },
+            "lembranca": "Cumpriu o contrato de caça da Guilda e limpou as margens do Ribeirão de cinco slimes.",
+            "narrar": "O jogador relata à Maren a limpeza do Ribeirão. Ela torce o nariz para o cheiro de gosma que ainda sobe da roupa do Desperto, registra o contrato no cristal de leitura, paga dez cobres e entrega uma Poção de Mana, dizendo que os garimpeiros mandaram agradecer."
+          }
+        }
+      ]
+    },
+    "caca_lobos": {
+      "titulo": "Contrato de Caça: Lobos da Mata Cinzenta",
+      "doador": "maren",
+      "requer_item": "cartao_guilda",
+      "requer_missao": "caca_javalis",
+      "resumo": "Contrato de caça do quadro da Guilda, só para quem já provou o braço na Estrada Velha: uma alcateia de lobos cinzentos desceu da Mata Cinzenta e ronda as trilhas dos lenhadores. A Guilda paga por três abatidos.",
+      "etapas": [
+        {
+          "id": "cacar",
+          "texto": "Abater lobos cinzentos nas trilhas da Mata Cinzenta",
+          "objetivo": { "tipo": "abater", "alvo": "lobo", "qtd": 3 }
+        },
+        {
+          "id": "relatar",
+          "texto": "Relatar a caça dos lobos à Maren, no balcão da Guilda",
+          "objetivo": { "tipo": "falar", "npc": "maren" },
+          "ao_concluir": {
+            "cobre": 16,
+            "dar": { "pocao_vida": 2 },
+            "confianca": { "maren": 0.15 },
+            "lembranca": "Cumpriu o contrato de caça da Guilda e abateu três lobos cinzentos na Mata Cinzenta.",
+            "narrar": "O jogador relata à Maren a caça dos lobos da Mata Cinzenta. Ela ouve com atenção de verdade desta vez, registra o contrato no cristal de leitura, paga dezesseis cobres, entrega duas Poções de Vida e comenta, meio baixo, que o Rank E já não parece tão distante para esse Desperto."
+          }
+        }
+      ]
+    },
+    "caca_ruinas": {
+      "titulo": "Contrato Rank E: O Guardião das Ruínas",
+      "doador": "maren",
+      "requer_item": "cartao_guilda",
+      "requer_missao": "caca_lobos",
+      "resumo": "Contrato de rank mais alto, liberado pela Maren só para quem limpou a Mata Cinzenta: esqueletos errantes saem das Ruínas do Marco Antigo à noite, e algo maior desperta na câmara selada. Limpe os esqueletos e derrube o Guardião Rúnico.",
+      "etapas": [
+        {
+          "id": "esqueletos",
+          "texto": "Abater esqueletos errantes nas Ruínas do Marco Antigo",
+          "objetivo": { "tipo": "abater", "alvo": "esqueleto", "qtd": 4 }
+        },
+        {
+          "id": "guardiao",
+          "texto": "Derrubar o Guardião Rúnico que desperta na câmara das Ruínas",
+          "objetivo": { "tipo": "abater", "alvo": "guardiao", "qtd": 1 }
+        },
+        {
+          "id": "relatar",
+          "texto": "Relatar à Maren a queda do Guardião Rúnico",
+          "objetivo": { "tipo": "falar", "npc": "maren" },
+          "ao_concluir": {
+            "cobre": 40,
+            "dar": { "pocao_vida": 2, "pocao_mana": 2 },
+            "confianca": { "maren": 0.2 },
+            "lembranca": "Limpou os esqueletos das Ruínas do Marco Antigo e derrubou o Guardião Rúnico pelo contrato Rank E da Guilda.",
+            "narrar": "O jogador relata à Maren a queda do Guardião Rúnico das Ruínas do Marco Antigo. Ela para tudo o que fazia, chama um superior com os olhos, registra o feito no cristal de leitura (que brilha num tom mais forte), paga quarenta cobres, entrega duas Poções de Vida e duas de Mana e diz, sem o sorriso ensaiado, que a Guilda vai lembrar desse nome."
+          }
+        }
+      ]
+    }
+  },
+  "coletaveis": {
+    "lenha_patio": { "item": "feixe_lenha", "qtd": 1, "missao": "lenha_bram", "etapa": "buscar", "rotulo": "Recolher Feixe de Lenha" },
+    "erva_1": { "item": "erva_brasa", "qtd": 1, "missao": "ervas_sera", "etapa": "colher", "rotulo": "Colher Erva-de-Brasa" },
+    "erva_2": { "item": "erva_brasa", "qtd": 1, "missao": "ervas_sera", "etapa": "colher", "rotulo": "Colher Erva-de-Brasa" },
+    "erva_3": { "item": "erva_brasa", "qtd": 1, "missao": "ervas_sera", "etapa": "colher", "rotulo": "Colher Erva-de-Brasa" },
+    "erva_4": { "item": "erva_brasa", "qtd": 1, "missao": "ervas_sera", "etapa": "colher", "rotulo": "Colher Erva-de-Brasa" },
+    "bolinho": { "item": "bolinho", "qtd": 1, "missao": "gato_tilly", "etapa": "achar", "rotulo": "Pegar o Bolinho" },
+    "maca_carroca": { "item": "maca", "qtd": 2, "rotulo": "Pegar maçãs caídas da carroça" },
+    "suprimentos_estrada": { "item": "minerio_alvor", "qtd": 1, "missao": "patrulha_sul", "etapa": "recuperar", "rotulo": "Recuperar Carga de Cristal da Carroça" },
+    "cogumelo_1": { "item": "cogumelo_azul", "qtd": 1, "missao": "fungos_mata", "etapa": "colher", "rotulo": "Colher Cogumelo-da-Névoa" },
+    "cogumelo_2": { "item": "cogumelo_azul", "qtd": 1, "missao": "fungos_mata", "etapa": "colher", "rotulo": "Colher Cogumelo-da-Névoa" },
+    "cogumelo_3": { "item": "cogumelo_azul", "qtd": 1, "missao": "fungos_mata", "etapa": "colher", "rotulo": "Colher Cogumelo-da-Névoa" },
+    "fragmento_marco": { "item": "fragmento_runa", "qtd": 1, "missao": "segredo_marco", "etapa": "reliquia", "rotulo": "Recolher Fragmento do Primeiro Marco" },
+    "bau_ruinas_loot": { "item": "pocao_vigor", "qtd": 1, "rotulo": "Pegar Poção Ancestral do Baú" },
+    "tesouro_acampamento": { "item": "pao_mel", "qtd": 2, "rotulo": "Pegar Provisões do Acampamento" }
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "versao": 1,
+  "moeda": { "id": "cobre", "nome": "Cobre", "icone": "./art/icons/cobre.png", "icone_prompt": "uma pequena pilha de moedas de cobre antigas com um furo quadrado no centro, brilho alaranjado" },
+  "status": {
+    "vigor": { "nome": "Vigor", "max": 100, "inicial": 80, "descricao": "Fôlego para correr. Gasta ao correr e volta devagar parado ou andando." },
+    "calor": { "nome": "Calor", "max": 100, "inicial": 70, "descricao": "Temperatura do corpo. A chuva esfria ao ar livre; telhados e fogo aquecem. Com frio você anda mais devagar." },
+    "vida": { "nome": "Vida", "max": 100, "inicial": 100, "descricao": "Pontos de vida. Golpes de monstros tiram vida; poções, magia de cura e descanso devolvem. Em zero você desmaia e acorda em local seguro." },
+    "mana": { "nome": "Mana", "max": 60, "inicial": 60, "descricao": "Energia mágica do Desperto. Alimenta as magias e volta sozinha com o tempo." }
+  },
+  "itens": {
+    "feixe_lenha": {
+      "nome": "Feixe de Lenha",
+      "tipo": "missao",
+      "descricao": "Achas de lenha cortada, amarradas com corda. Bram pediu para o salão.",
+      "empilha": 1,
+      "icone_prompt": "um feixe de achas de lenha cortada amarrado com corda grossa"
+    },
+    "ensopado": {
+      "nome": "Tigela de Ensopado",
+      "tipo": "consumivel",
+      "descricao": "Ensopado de carne defumada e raízes da Lanterna Torta. Esquenta o corpo e dá fôlego.",
+      "efeito": { "calor": 45, "vigor": 30 },
+      "empilha": 5,
+      "preco": 6,
+      "icone_prompt": "uma tigela de barro com ensopado fumegante de carne e raízes, colher de madeira"
+    },
+    "caneca_sidra": {
+      "nome": "Caneca de Sidra Quente",
+      "tipo": "consumivel",
+      "descricao": "Sidra de maçã aquecida com canela. Bram jura que cura até coração partido.",
+      "efeito": { "calor": 20, "vigor": 10 },
+      "empilha": 5,
+      "preco": 2,
+      "icone_prompt": "uma caneca de estanho com sidra quente fumegante e um pau de canela"
+    },
+    "pao_centeio": {
+      "nome": "Pão de Centeio",
+      "tipo": "consumivel",
+      "descricao": "Pão escuro, ainda morno, da Padaria da Rosa. Bom para recuperar o fôlego.",
+      "efeito": { "vigor": 30 },
+      "empilha": 10,
+      "preco": 3,
+      "icone_prompt": "um pão de centeio redondo e escuro com cortes em cruz na casca, ainda fumegando"
+    },
+    "pao_mel": {
+      "nome": "Pãozinho de Mel",
+      "tipo": "consumivel",
+      "descricao": "Especialidade da Rosa. Doce, macio e quentinho.",
+      "efeito": { "vigor": 20, "calor": 10 },
+      "empilha": 10,
+      "preco": 4,
+      "icone_prompt": "um pãozinho doce dourado e brilhante pincelado com mel, gotas de mel escorrendo"
+    },
+    "maca": {
+      "nome": "Maçã do Pomar",
+      "tipo": "consumivel",
+      "descricao": "Maçã vermelha e crocante das barracas do mercado.",
+      "efeito": { "vigor": 12 },
+      "empilha": 10,
+      "preco": 1,
+      "icone_prompt": "uma maçã vermelha brilhante com uma folha verde no cabo"
+    },
+    "cha_brasa": {
+      "nome": "Chá de Erva-de-Brasa",
+      "tipo": "consumivel",
+      "descricao": "Infusão da Botica da Sera. Aquece de dentro para fora por um bom tempo.",
+      "efeito": { "calor": 60 },
+      "empilha": 5,
+      "preco": 5,
+      "icone_prompt": "um frasco de vidro com chá alaranjado brilhante e folhas vermelhas em brasa dentro, vapor"
+    },
+    "pocao_vigor": {
+      "nome": "Poção de Vigor",
+      "tipo": "consumivel",
+      "descricao": "Poção verde-esmeralda. Fôlego total e corrida sem cansaço por um minuto.",
+      "efeito": { "vigor": 100, "buff": { "id": "folego", "segundos": 60 } },
+      "empilha": 3,
+      "preco": 12,
+      "icone_prompt": "uma poção mágica em frasco redondo de vidro com líquido verde-esmeralda brilhante e rolha de cortiça"
+    },
+    "erva_brasa": {
+      "nome": "Erva-de-Brasa",
+      "tipo": "material",
+      "descricao": "Folhas vermelhas que guardam calor. Crescem no Jardim do Templo.",
+      "empilha": 10,
+      "icone_prompt": "um ramo de folhas vermelho-alaranjadas que brilham como brasas, pequenas faíscas"
+    },
+    "cesta_paes": {
+      "nome": "Cesta de Pães",
+      "tipo": "missao",
+      "descricao": "Pães da Rosa para a guarda do Portão Sul.",
+      "empilha": 1,
+      "icone_prompt": "uma cesta de vime cheia de pães dourados coberta com pano xadrez vermelho"
+    },
+    "cartao_guilda": {
+      "nome": "Cartão de Aventureiro (Rank F)",
+      "tipo": "chave",
+      "descricao": "Placa de bronze da Guilda dos Aventureiros com seu registro. Libera contratos do quadro.",
+      "empilha": 1,
+      "icone_prompt": "um cartão de aventureiro de anime isekai em bronze com runas azuis gravadas e a letra F, brilho mágico"
+    },
+    "lente_darian": {
+      "nome": "Lente de Cristal Consertada",
+      "tipo": "missao",
+      "descricao": "A lente de avaliação do Velho Darian, com a armação refeita na forja do Torvin.",
+      "empilha": 1,
+      "icone_prompt": "uma lente de aumento de cristal com armação de latão ornamentada, reflexo azulado"
+    },
+    "bolinho": {
+      "nome": "Bolinho (gato da Tilly)",
+      "tipo": "missao",
+      "descricao": "Um gato laranja gorducho e molhado de chuva. Quer voltar para casa.",
+      "empilha": 1,
+      "icone_prompt": "um gatinho laranja gorducho e fofo encharcado de chuva, cara emburrada, estilo anime"
+    },
+    "amuleto_trevo": {
+      "nome": "Amuleto de Trevo",
+      "tipo": "chave",
+      "descricao": "Presente da Tilly. Dizem que dá sorte — e a chuva parece incomodar um pouco menos.",
+      "passivo": { "calor_resistencia": 0.3 },
+      "empilha": 1,
+      "icone_prompt": "um amuleto artesanal de trevo de quatro folhas preso num cordão de fita rosa"
+    },
+    "mapa_luna": {
+      "nome": "Mapa da Capital (rabiscado pela Luna)",
+      "tipo": "chave",
+      "descricao": "O mapa de Cinzas de Alvor que você e a Luna completaram juntos. Mostra os nomes de todos os marcos no mapa.",
+      "empilha": 1,
+      "icone_prompt": "um pergaminho de mapa desenhado à mão com carvão, cidade murada, anotações e um coração pequeno no canto"
+    },
+    "fragmento_runa": {
+      "nome": "Fragmento do Primeiro Marco",
+      "tipo": "missao",
+      "descricao": "Fragmento de pedra ancestral gravado com runas de mana que reagem ao calor da mão.",
+      "empilha": 1,
+      "icone_prompt": "fragmento de pedra runica azul brilhante"
+    },
+    "cogumelo_azul": {
+      "nome": "Cogumelo-da-Névoa",
+      "tipo": "material",
+      "descricao": "Fungo bioluminescente colhido sob a névoa da Mata Cinzenta. Muito valorizado por alquimistas.",
+      "empilha": 10,
+      "icone_prompt": "cogumelos azuis brilhantes"
+    },
+    "minerio_alvor": {
+      "nome": "Cristal Bruto do Ribeirão",
+      "tipo": "material",
+      "descricao": "Cristal de mana bruto extraído perto do ribeirão ou transportado em caravanas.",
+      "empilha": 5,
+      "preco": 8,
+      "icone_prompt": "cristal bruto azul e dourado"
+    },
+    "amuleto_aurora": {
+      "nome": "Amuleto da Aurora Ancestral",
+      "tipo": "chave",
+      "descricao": "Relíquia entregue por Luna após desvendar as Ruínas do Marco. Protege do frio intenso e irradia luz suave.",
+      "passivo": { "calor_resistencia": 0.45 },
+      "empilha": 1,
+      "icone_prompt": "medalhao dourado de sol com gema azul"
+    },
+    "espada_curta": {
+      "nome": "Espada Curta de Aço",
+      "tipo": "equipamento",
+      "slot": "arma",
+      "descricao": "Lâmina de uma mão, simples e honesta, do arsenal da Guarda. Golpes rápidos em arco.",
+      "modelo": "./assets/kits/adv/sword_1handed.gltf",
+      "combate": { "dano_corpo": 14, "alcance": 2.1, "arco_graus": 110, "recarga": 0.55, "poder_magico": 1.0, "regen_mana": 0.0 },
+      "empilha": 1,
+      "preco": 25,
+      "icone_prompt": "uma espada curta de aço de uma mão com guarda de latão e cabo de couro"
+    },
+    "cajado_aprendiz": {
+      "nome": "Cajado de Aprendiz",
+      "tipo": "equipamento",
+      "slot": "arma",
+      "descricao": "Cajado de freixo com um cristal de mana na ponta. Golpeia fraco, mas amplifica magias e acelera a mana.",
+      "modelo": "./assets/kits/adv/staff.gltf",
+      "combate": { "dano_corpo": 8, "alcance": 2.3, "arco_graus": 90, "recarga": 0.7, "poder_magico": 1.35, "regen_mana": 1.5 },
+      "empilha": 1,
+      "preco": 30,
+      "icone_prompt": "um cajado de madeira clara com um cristal azul de mana preso na ponta"
+    },
+    "pocao_vida": {
+      "nome": "Poção de Vida",
+      "tipo": "consumivel",
+      "descricao": "Frasco rubro da Botica da Sera. Fecha cortes e devolve o fôlego da luta.",
+      "efeito": { "vida": 45 },
+      "empilha": 5,
+      "preco": 6,
+      "icone_prompt": "um frasco de vidro redondo com líquido vermelho rubi brilhante e rolha de cortiça"
+    },
+    "pocao_mana": {
+      "nome": "Poção de Mana",
+      "tipo": "consumivel",
+      "descricao": "Líquido azul que formiga na língua. Recarrega a mana do Desperto.",
+      "efeito": { "mana": 40 },
+      "empilha": 5,
+      "preco": 6,
+      "icone_prompt": "um frasco de vidro alongado com líquido azul cintilante e rolha de cortiça"
+    },
+    "essencia_slime": {
+      "nome": "Essência Gelatinosa",
+      "tipo": "material",
+      "descricao": "Núcleo morno e translúcido de um slime. Alquimistas pagam bem.",
+      "empilha": 20,
+      "preco": 2,
+      "icone_prompt": "uma gota gelatinosa verde-água translúcida com um brilho no centro"
+    },
+    "presa_javali": {
+      "nome": "Presa de Javali",
+      "tipo": "material",
+      "descricao": "Presa curva e amarelada de um javali selvagem da Estrada Velha.",
+      "empilha": 20,
+      "preco": 2,
+      "icone_prompt": "uma presa curva de javali amarelada"
+    },
+    "pelagem_lobo": {
+      "nome": "Pelagem Cinzenta",
+      "tipo": "material",
+      "descricao": "Pele grossa de lobo da Mata Cinzenta, ainda cheirando a névoa.",
+      "empilha": 20,
+      "preco": 3,
+      "icone_prompt": "uma pelagem de lobo cinza dobrada"
+    },
+    "po_ossos": {
+      "nome": "Pó de Ossos Antigos",
+      "tipo": "material",
+      "descricao": "Pó fino que restou de um esqueleto errante. Brilha fraco no escuro.",
+      "empilha": 20,
+      "preco": 3,
+      "icone_prompt": "um saquinho de couro com pó de osso branco brilhando levemente"
+    },
+    "estilhaco_runa": {
+      "nome": "Estilhaço Rúnico",
+      "tipo": "material",
+      "descricao": "Lasca de pedra com runas apagadas, irmã menor do Fragmento do Primeiro Marco.",
+      "empilha": 20,
+      "preco": 4,
+      "icone_prompt": "uma lasca de pedra cinza com runas azuis fracas"
+    },
+    "nucleo_runico": {
+      "nome": "Núcleo do Guardião",
+      "tipo": "material",
+      "descricao": "Coração de mana do Guardião Rúnico das Ruínas. Pulsa como se lembrasse de algo.",
+      "empilha": 5,
+      "preco": 20,
+      "icone_prompt": "uma esfera de pedra com runas ciano pulsantes"
+    }
+  }
+}

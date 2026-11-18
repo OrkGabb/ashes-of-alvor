@@ -1,0 +1,987 @@
+{
+  "versao": 1,
+  "_doc": "Fonte única dos efeitos sonoros. 'sons' alimenta tools/gen_sfx.py (prompt, duração, loop) e o navegador (arquivo em public/audio/sfx/<id>.mp3). 'fx' liga os eventos do jogo (audio.fx/cue) a um som; sem o arquivo, o sintetizador antigo continua tocando. 'leitos' são fundos em loop misturados por zona, hora, clima e interior; 'emissores' são loops presos a um ponto do mundo; 'pontuais' disparam um som avulso de tempos em tempos. 'variantes': N gera <id>.mp3, <id>_2.mp3 ... <id>_N.mp3 com o mesmo prompt; o jogo sorteia uma a cada disparo. 'ocupacao': {'zonas': [...], 'cheio': N} escala um leito pelo número de NPCs nas zonas (zero se vazio); {'zonas': [...], 'min': N} é condição de um pontual. Pontuais: 'alcance' (m, além disso não toca), 'ref' e 'queda' (atenuação do PannerNode); do outro lado de parede, abafado a 30%.",
+  "gerador": {
+    "modelo": "eleven_text_to_sound_v2",
+    "formato": "mp3_44100_128",
+    "creditosPorSegundo": 10,
+    "lufsLoop": -24,
+    "lufsAvulso": -17,
+    "picoMax": -1.5
+  },
+  "sons": {
+    "amb_chuva_rua": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Steady medium rain falling on cobblestone streets and clay tile roofs in a medieval town, water trickling from gutters, no thunder, no voices, seamless ambience"
+    },
+    "amb_chuva_telhado": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Rain heard from inside a wooden tavern, muffled drumming on the roof above, occasional drips on a windowsill, cozy, no voices, seamless ambience"
+    },
+    "amb_vento_campo": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.45,
+      "ganho": 0.8,
+      "prompt": "Gentle wind blowing across open farmland, soft gusts through tall grass and orchard leaves, rustling, no birds, seamless ambience"
+    },
+    "amb_dia_natureza": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.45,
+      "ganho": 0.8,
+      "prompt": "Continuous dense dawn chorus in a summer countryside, many songbirds chirping constantly at different distances with no pauses, soft insect buzz, light breeze in trees, no voices, no music, seamless ambience"
+    },
+    "amb_noite": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.45,
+      "ganho": 0.8,
+      "prompt": "Loud close field crickets chirping continuously on a warm summer night in the countryside, dense insect chorus, an owl hooting once in the background, seamless ambience"
+    },
+    "amb_praca": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.7,
+      "prompt": "Medieval town market square daytime, distant indistinct crowd murmur with no clear words, footsteps on cobblestones, a cart wheel rolling far away, occasional clink of pottery, seamless ambience"
+    },
+    "amb_taverna": {
+      "dur": 12,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.75,
+      "prompt": "Inside a cozy medieval tavern, indistinct murmured conversations with no clear words, soft laughter, wooden mugs clinking, chairs creaking on wooden floor, seamless ambience"
+    },
+    "amb_salao": {
+      "dur": 10,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.6,
+      "prompt": "Large stone castle great hall interior, quiet reverberant room tone, distant footsteps echoing, faint fire crackle, very sparse murmurs, seamless ambience"
+    },
+    "amb_lareira": {
+      "dur": 10,
+      "loop": true,
+      "influence": 0.55,
+      "ganho": 1.0,
+      "prompt": "Close-up crackling wood fireplace, logs popping and hissing, warm steady fire, no other sounds, seamless loop"
+    },
+    "amb_chafariz": {
+      "dur": 8,
+      "loop": true,
+      "influence": 0.55,
+      "ganho": 0.9,
+      "prompt": "Small stone fountain, water splashing gently into a basin, steady trickle, close perspective, no other sounds, seamless loop"
+    },
+    "amb_moinho": {
+      "dur": 8,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Old wooden windmill turning slowly, rhythmic creaking of wooden gears and sails sweeping through the air, low wooden groans, seamless loop"
+    },
+    "amb_forja_fogo": {
+      "dur": 8,
+      "loop": true,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Blacksmith forge fire, roaring hot coals with a low steady whoosh, occasional crackle of embers, no hammering, seamless loop"
+    },
+    "forja_martelo": {
+      "dur": 3,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Blacksmith hammer striking hot iron on an anvil, three ringing metallic strikes with short pauses, workshop reverb"
+    },
+    "forja_fole": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "Large leather bellows pumped once into a forge, deep airy whoosh and a flare of fire"
+    },
+    "forja_tempera": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "Red hot metal blade plunged into a bucket of water, loud steam hiss and bubbling quench"
+    },
+    "treino_espadas": {
+      "dur": 3,
+      "variantes": 3,
+      "influence": 0.55,
+      "ganho": 0.8,
+      "prompt": "Two soldiers sparring with steel swords outdoors, several clashing blade hits and a shield bash, no voices"
+    },
+    "galo": {
+      "dur": 3,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "A rooster crowing once at dawn on a farm, slightly distant"
+    },
+    "cavalo_relincho": {
+      "dur": 2.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "A horse neighing in a wooden stable, single whinny"
+    },
+    "cavalo_bufo": {
+      "dur": 1.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "A horse snorting and blowing air through its nostrils, a hoof stomping on straw"
+    },
+    "cao_latido": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.55,
+      "ganho": 0.7,
+      "prompt": "A dog barking a few times far away across a sleeping village at night, distant and echoing"
+    },
+    "gato_miado": {
+      "dur": 1.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.7,
+      "prompt": "A small cat meowing softly once"
+    },
+    "corvo": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.7,
+      "prompt": "A crow cawing twice from a rooftop, outdoor, slightly distant"
+    },
+    "galinhas": {
+      "dur": 3,
+      "variantes": 2,
+      "influence": 0.55,
+      "ganho": 0.7,
+      "prompt": "A few chickens clucking and pecking in a farmyard"
+    },
+    "passaro_canto_1": {
+      "dur": 3,
+      "variantes": 3,
+      "influence": 0.55,
+      "ganho": 0.7,
+      "prompt": "A single blackbird singing a melodic phrase from a tree, clear and close, no other sounds"
+    },
+    "passaro_canto_2": {
+      "dur": 3,
+      "variantes": 3,
+      "influence": 0.55,
+      "ganho": 0.7,
+      "prompt": "A small wren trilling a fast bright song from a bush, no other sounds"
+    },
+    "lobo_uivo": {
+      "dur": 4,
+      "variantes": 2,
+      "influence": 0.55,
+      "ganho": 0.6,
+      "prompt": "A lone wolf howling far away in a dark forest at night, distant and eerie"
+    },
+    "trovao_longe": {
+      "dur": 5,
+      "variantes": 3,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Distant rolling thunder rumbling across the sky, deep and long, no rain"
+    },
+    "trovao_perto": {
+      "dur": 4,
+      "variantes": 2,
+      "influence": 0.5,
+      "ganho": 0.9,
+      "prompt": "Close thunder clap, sharp crack followed by a heavy booming rumble, no rain"
+    },
+    "sino_campanario": {
+      "dur": 5,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "A large bronze church bell struck once, deep resonant tone with a long ringing decay"
+    },
+    "porta_abrir": {
+      "dur": 1.5,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Old heavy wooden door with iron hinges creaking open slowly"
+    },
+    "porta_fechar": {
+      "dur": 1,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Heavy wooden door closing with a solid thud and an iron latch click"
+    },
+    "porta_bater": {
+      "dur": 1.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Knuckles knocking three times on a thick wooden door"
+    },
+    "portao_corrente": {
+      "dur": 4,
+      "influence": 0.55,
+      "ganho": 1.0,
+      "prompt": "Huge castle gate being winched, iron chain rattling over a wooden windlass, heavy oak gate groaning and landing with a deep thud"
+    },
+    "sarilho": {
+      "dur": 1.5,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Iron ratchet of a wooden winch clicking as it turns, metallic pawl clicks"
+    },
+    "bau_abrir": {
+      "dur": 1.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Wooden treasure chest lid creaking open, small iron hinges, lid knocking back"
+    },
+    "janela": {
+      "dur": 1,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.9,
+      "prompt": "Wooden window shutter swinging open with a short creak and a light tap against the wall"
+    },
+    "sentar": {
+      "dur": 1,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "Person sitting down on a wooden chair, brief creak and soft cloth rustle"
+    },
+    "beber": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "Scooping water with cupped hands from a stone fountain and drinking a few gulps"
+    },
+    "moedas": {
+      "dur": 1,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "A few copper and silver coins dropped into a hand and jingling in a small leather purse"
+    },
+    "aquecer": {
+      "dur": 1.5,
+      "influence": 0.55,
+      "ganho": 0.8,
+      "prompt": "Rubbing hands together near a crackling fire, soft skin friction and warm fire pop"
+    },
+    "pegar": {
+      "dur": 1,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.8,
+      "prompt": "Picking up a bundle of firewood logs from the ground, wooden knocks and cloth rustle"
+    },
+    "passos_pedra": {
+      "dur": 4,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.55,
+      "cortes": "auto",
+      "prompt": "Footsteps of a person in leather boots walking at a steady pace on cobblestones, eight distinct steps, outdoors, no other sounds"
+    },
+    "passos_terra": {
+      "dur": 4,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.55,
+      "cortes": "auto",
+      "prompt": "Clear close-up footsteps of a person in leather boots walking on a dry dirt and gravel path, crunchy, eight distinct evenly spaced steps, no other sounds"
+    },
+    "passos_madeira": {
+      "dur": 4,
+      "variantes": 3,
+      "influence": 0.6,
+      "ganho": 0.55,
+      "cortes": "auto",
+      "prompt": "Footsteps of a person in leather boots walking at a steady pace on old wooden floorboards indoors, slight creaks, eight distinct steps, no other sounds"
+    },
+    "ui_pagina": {
+      "dur": 1,
+      "influence": 0.6,
+      "ganho": 0.6,
+      "prompt": "Turning a single page of an old parchment journal, dry paper rustle"
+    },
+    "ui_bolsa": {
+      "dur": 1,
+      "influence": 0.6,
+      "ganho": 0.6,
+      "prompt": "Opening a leather satchel, buckle clink and leather flap rustle"
+    },
+    "ui_missao": {
+      "dur": 3,
+      "influence": 0.5,
+      "ganho": 0.55,
+      "prompt": "Short warm fantasy achievement chime, soft harp glissando with a gentle bell, magical and uplifting"
+    },
+    "taverna_risada": {
+      "dur": 3,
+      "variantes": 2,
+      "influence": 0.5,
+      "ganho": 0.6,
+      "prompt": "A small group of people bursting into hearty laughter at a tavern table, indistinct, no clear words, indoor wooden room"
+    },
+    "taverna_brinde": {
+      "dur": 2,
+      "variantes": 2,
+      "influence": 0.55,
+      "ganho": 0.6,
+      "prompt": "Several heavy wooden and pewter mugs clinking together in a toast at a tavern, a short cheer with no clear words"
+    },
+    "pregao": {
+      "dur": 3,
+      "variantes": 2,
+      "influence": 0.45,
+      "ganho": 0.5,
+      "prompt": "A medieval market vendor calling out to customers far away across a busy square, muffled and indistinct, no intelligible words"
+    },
+    "carroca": {
+      "dur": 6,
+      "influence": 0.55,
+      "ganho": 0.7,
+      "prompt": "A wooden horse-drawn cart rolling slowly over cobblestones, iron-rimmed wheels rattling, hooves clopping, passing by"
+    },
+    "rajada_vento": {
+      "dur": 4,
+      "variantes": 2,
+      "influence": 0.5,
+      "ganho": 0.7,
+      "prompt": "A single strong gust of wind sweeping across an open field, rising and fading, leaves rustling"
+    },
+    "goteira": {
+      "dur": 3,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.6,
+      "prompt": "Rainwater dripping from a leaking roof into a wooden bucket indoors, a few slow plinking drops"
+    },
+    "lenha_estala": {
+      "dur": 1.5,
+      "variantes": 2,
+      "influence": 0.6,
+      "ganho": 0.7,
+      "prompt": "A single loud pop and crackle of a burning log in a fireplace, embers settling"
+    }
+  },
+  "fx": {
+    "doorOpen": "porta_abrir",
+    "doorClose": "porta_fechar",
+    "knock": "porta_bater",
+    "gate": "portao_corrente",
+    "lever": "sarilho",
+    "chest": "bau_abrir",
+    "window": "janela",
+    "sit": "sentar",
+    "water": "beber",
+    "bell": "sino_campanario",
+    "warm": "aquecer",
+    "pagina": "ui_pagina",
+    "bolsa": "ui_bolsa"
+  },
+  "cues": {
+    "quest": "ui_missao",
+    "coin": "moedas",
+    "pickup": "pegar"
+  },
+  "passos": {
+    "pedra": "passos_pedra",
+    "terra": "passos_terra",
+    "madeira": "passos_madeira",
+    "intervaloAndar": 0.5,
+    "intervaloCorrer": 0.32,
+    "npc": {
+      "raio": 7,
+      "ganho": 0.3,
+      "max": 2
+    }
+  },
+  "leitos": [
+    {
+      "som": "amb_chuva_rua",
+      "chuva": "com",
+      "fora": 1,
+      "abafado": 0
+    },
+    {
+      "som": "amb_chuva_telhado",
+      "chuva": "com",
+      "fora": 0,
+      "dentro": 1
+    },
+    {
+      "som": "amb_vento_campo",
+      "fora": 0.25,
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "TreinoZ",
+        "LargoNorte",
+        "PortaoSul"
+      ],
+      "abafado": 0.1
+    },
+    {
+      "som": "amb_dia_natureza",
+      "periodo": "dia",
+      "chuva": "sem",
+      "fora": 0.3,
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "TreinoZ",
+        "Jardim",
+        "TemploMarco"
+      ],
+      "abafado": 0.05
+    },
+    {
+      "som": "amb_noite",
+      "periodo": "noite",
+      "chuva": "sem",
+      "fora": 0.45,
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "TreinoZ",
+        "Jardim",
+        "PortaoSul"
+      ],
+      "abafado": 0.08
+    },
+    {
+      "som": "amb_praca",
+      "periodo": "dia",
+      "fora": 0.15,
+      "zonas": [
+        "Praca",
+        "Mercado",
+        "GuildaMarco",
+        "Inn_Frente"
+      ],
+      "abafado": 0.12,
+      "chuvaReduz": 0.7,
+      "ocupacao": {
+        "zonas": [
+          "Praca",
+          "Mercado"
+        ],
+        "cheio": 6
+      }
+    },
+    {
+      "som": "amb_taverna",
+      "interior": [
+        "Inn"
+      ],
+      "fora": 0,
+      "abafado": 0,
+      "ocupacao": {
+        "zonas": [
+          "Inn"
+        ],
+        "cheio": 4
+      }
+    },
+    {
+      "som": "amb_salao",
+      "interior": [
+        "Paco",
+        "Guilda",
+        "Templo"
+      ],
+      "fora": 0,
+      "abafado": 0
+    }
+  ],
+  "emissores": [
+    {
+      "som": "amb_lareira",
+      "fogo": "hearth",
+      "ref": 1.4,
+      "max": 18,
+      "rolloff": 1.6,
+      "abafaFora": true
+    },
+    {
+      "som": "amb_forja_fogo",
+      "fogo": "forge",
+      "ref": 1.6,
+      "max": 22,
+      "rolloff": 1.4
+    },
+    {
+      "som": "amb_chafariz",
+      "modelo": [
+        "kenney/fountain-round",
+        "kenney/fountain-round-detail",
+        "kenney/fountain-square"
+      ],
+      "ref": 1.5,
+      "max": 20,
+      "rolloff": 1.5
+    },
+    {
+      "som": "amb_moinho",
+      "modelo": [
+        "kenney/windmill"
+      ],
+      "ref": 6,
+      "max": 60,
+      "rolloff": 1.0,
+      "altura": 0
+    }
+  ],
+  "pontuais": [
+    {
+      "sons": [
+        "passaro_canto_1",
+        "passaro_canto_2"
+      ],
+      "periodo": "dia",
+      "chuva": "sem",
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "TreinoZ",
+        "Jardim",
+        "TemploMarco",
+        "Praca",
+        "Mercado"
+      ],
+      "intervalo": [
+        5,
+        14
+      ],
+      "distancia": [
+        6,
+        22
+      ],
+      "altura": [
+        3,
+        8
+      ]
+    },
+    {
+      "sons": [
+        "corvo"
+      ],
+      "chuva": "sem",
+      "periodo": "dia",
+      "fora": true,
+      "intervalo": [
+        35,
+        80
+      ],
+      "distancia": [
+        12,
+        35
+      ],
+      "altura": [
+        6,
+        10
+      ]
+    },
+    {
+      "sons": [
+        "galo"
+      ],
+      "horas": [
+        5,
+        8
+      ],
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "LargoNorte"
+      ],
+      "intervalo": [
+        40,
+        90
+      ],
+      "p": [
+        -30,
+        1,
+        -84
+      ],
+      "raio": 6
+    },
+    {
+      "sons": [
+        "galinhas"
+      ],
+      "periodo": "dia",
+      "chuva": "sem",
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ"
+      ],
+      "intervalo": [
+        18,
+        40
+      ],
+      "p": [
+        -30,
+        0.3,
+        -84
+      ],
+      "raio": 5
+    },
+    {
+      "sons": [
+        "cavalo_relincho",
+        "cavalo_bufo",
+        "cavalo_bufo"
+      ],
+      "zonas": [
+        "EstabuloZ",
+        "CampoCastelo",
+        "TreinoZ"
+      ],
+      "intervalo": [
+        10,
+        28
+      ],
+      "p": [
+        46,
+        1.2,
+        -94
+      ],
+      "raio": 7
+    },
+    {
+      "sons": [
+        "treino_espadas"
+      ],
+      "horas": [
+        8,
+        18
+      ],
+      "chuva": "sem",
+      "zonas": [
+        "TreinoZ",
+        "EstabuloZ",
+        "CampoCastelo"
+      ],
+      "intervalo": [
+        4,
+        9
+      ],
+      "p": [
+        47,
+        1.2,
+        -75
+      ],
+      "raio": 5
+    },
+    {
+      "sons": [
+        "cao_latido"
+      ],
+      "periodo": "noite",
+      "fora": true,
+      "intervalo": [
+        40,
+        100
+      ],
+      "distancia": [
+        40,
+        70
+      ],
+      "altura": [
+        1,
+        2
+      ]
+    },
+    {
+      "sons": [
+        "lobo_uivo"
+      ],
+      "periodo": "noite",
+      "chuva": "sem",
+      "zonas": [
+        "PortaoSul",
+        "Mercado"
+      ],
+      "intervalo": [
+        60,
+        140
+      ],
+      "p": [
+        0,
+        4,
+        110
+      ],
+      "raio": 30
+    },
+    {
+      "sons": [
+        "gato_miado"
+      ],
+      "zonas": [
+        "Backyard",
+        "Inn_Frente"
+      ],
+      "intervalo": [
+        45,
+        120
+      ],
+      "p": [
+        3.5,
+        0.3,
+        -30
+      ],
+      "raio": 2
+    },
+    {
+      "sons": [
+        "trovao_longe",
+        "trovao_longe",
+        "trovao_perto"
+      ],
+      "chuvaMin": 0.7,
+      "fora": true,
+      "dentro": true,
+      "intervalo": [
+        18,
+        55
+      ],
+      "distancia": [
+        60,
+        140
+      ],
+      "altura": [
+        40,
+        80
+      ]
+    },
+    {
+      "sons": [
+        "forja_martelo"
+      ],
+      "npcAnim": "forjar",
+      "intervalo": [
+        2.2,
+        3.4
+      ],
+      "raio": 0,
+      "alcance": 28,
+      "ref": 2.5,
+      "queda": 1.4,
+      "dentro": true
+    },
+    {
+      "sons": [
+        "forja_fole",
+        "forja_tempera"
+      ],
+      "npcAnim": "forjar",
+      "intervalo": [
+        14,
+        30
+      ],
+      "raio": 0,
+      "alcance": 28,
+      "ref": 2.5,
+      "queda": 1.4,
+      "dentro": true
+    },
+    {
+      "sons": [
+        "taverna_risada",
+        "taverna_brinde"
+      ],
+      "zonas": [
+        "Inn"
+      ],
+      "dentro": true,
+      "horas": [
+        11,
+        2
+      ],
+      "intervalo": [
+        45,
+        120
+      ],
+      "p": [
+        0,
+        1.2,
+        -17
+      ],
+      "raio": 4,
+      "ocupacao": {
+        "zonas": [
+          "Inn"
+        ],
+        "min": 3
+      }
+    },
+    {
+      "sons": [
+        "pregao"
+      ],
+      "periodo": "dia",
+      "chuva": "sem",
+      "zonas": [
+        "Praca",
+        "Mercado"
+      ],
+      "intervalo": [
+        20,
+        45
+      ],
+      "distancia": [
+        14,
+        30
+      ],
+      "altura": [
+        1.5,
+        2
+      ],
+      "ocupacao": {
+        "zonas": [
+          "Praca",
+          "Mercado"
+        ],
+        "min": 3
+      }
+    },
+    {
+      "sons": [
+        "carroca"
+      ],
+      "horas": [
+        7,
+        18
+      ],
+      "zonas": [
+        "Praca",
+        "Mercado",
+        "LargoNorte",
+        "CampoCastelo"
+      ],
+      "intervalo": [
+        90,
+        200
+      ],
+      "distancia": [
+        10,
+        25
+      ],
+      "altura": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "sons": [
+        "rajada_vento"
+      ],
+      "zonas": [
+        "CampoCastelo",
+        "MoinhoZ",
+        "EstabuloZ",
+        "TreinoZ",
+        "PortaoSul"
+      ],
+      "intervalo": [
+        15,
+        40
+      ],
+      "distancia": [
+        4,
+        10
+      ],
+      "altura": [
+        2,
+        4
+      ]
+    },
+    {
+      "sons": [
+        "goteira"
+      ],
+      "chuvaMin": 0.4,
+      "zonas": [
+        "Inn",
+        "Guilda"
+      ],
+      "dentro": true,
+      "intervalo": [
+        10,
+        25
+      ],
+      "p": [
+        4.5,
+        2.2,
+        -23.5
+      ],
+      "raio": 1
+    },
+    {
+      "sons": [
+        "lenha_estala"
+      ],
+      "fogo": "hearth",
+      "dentro": true,
+      "fora": true,
+      "intervalo": [
+        5,
+        14
+      ],
+      "raio": 0
+    },
+    {
+      "sons": [
+        "sino_campanario"
+      ],
+      "horasCheias": [
+        6,
+        12,
+        18
+      ],
+      "toques": 3,
+      "dentro": true,
+      "fora": true,
+      "intervalo": [
+        1,
+        1
+      ],
+      "p": [
+        -25,
+        9,
+        -113.2
+      ],
+      "raio": 0,
+      "alcance": 260,
+      "ref": 9,
+      "queda": 0.55
+    }
+  ]
+}

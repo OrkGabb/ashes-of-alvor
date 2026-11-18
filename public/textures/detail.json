@@ -1,0 +1,164 @@
+{
+  "versao": 1,
+  "_doc": "Fonte única das texturas de detalhe pintadas à mão. 'camadas' vira public/textures/detail/<id>.png (R,G = normal tangente OpenGL, B = detalhe de luminância x0,5; gerado por tools/gen_detail_textures.py) e uma camada do texture array no navegador; a classe de cada pixel do kit Kenney vem do alfa da paleta (classe = índice da camada + 1, alfa = 255 - 32*classe; escrito por tools/build_city.py a partir de 'celulas' e 'paletas'). 'chao' substitui conjuntos PBR completos de public/textures/manifest.json. tile_m = metros por repetição; normal = força do relevo; contraste = desvio-padrão do detalhe gravado (1 ± contraste em torno da cor da paleta); forca = multiplicador no jogo; rugosidade = [base, variação pelo detalhe].",
+  "tamanho_px": 512,
+  "estilo": "Seamless tileable square texture for a stylized 3D fantasy game, hand-painted look like World of Warcraft or Genshin Impact, painterly brush strokes, flat orthographic front view filling the whole frame edge to edge, soft even lighting with no cast shadows, no perspective, no vignette, no objects, no text, no border, no watermark.",
+  "camadas": [
+    {
+      "id": "reboco",
+      "tile_m": 1.8,
+      "normal": 2.5,
+      "forca": 1.0,
+      "rugosidade": [
+        0.92,
+        0.06
+      ],
+      "prompt": "Subject: whitewashed lime plaster wall of a medieval half-timbered house, soft uneven trowel strokes, a few hairline cracks and faint patches of wear, cream color.",
+      "contraste": 0.14
+    },
+    {
+      "id": "viga",
+      "tile_m": 1.2,
+      "normal": 3.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.85,
+        0.1
+      ],
+      "prompt": "Subject: close-up of an old oak timber beam surface, strong horizontal wood grain running left to right, knots and small cracks along the grain, warm brown.",
+      "contraste": 0.24
+    },
+    {
+      "id": "tabuas",
+      "tile_m": 1.6,
+      "normal": 4.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.86,
+        0.1
+      ],
+      "prompt": "Subject: wall of horizontal wooden planks, five boards stacked top to bottom with dark gaps between them, visible grain and nail heads, weathered brown wood.",
+      "contraste": 0.26
+    },
+    {
+      "id": "pedra",
+      "tile_m": 2.0,
+      "normal": 5.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.9,
+        0.08
+      ],
+      "prompt": "Subject: castle masonry wall of rough rectangular stone blocks laid in staggered horizontal courses with recessed mortar joints, chipped edges, grey stone.",
+      "contraste": 0.26
+    },
+    {
+      "id": "telha",
+      "tile_m": 1.4,
+      "normal": 5.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.8,
+        0.12
+      ],
+      "prompt": "Subject: roof covered in overlapping rounded clay shingles arranged in horizontal rows, each row slightly overlapping the row below, chipped edges, terracotta color.",
+      "contraste": 0.26
+    },
+    {
+      "id": "folhagem",
+      "tile_m": 1.0,
+      "normal": 3.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.85,
+        0.1
+      ],
+      "prompt": "Subject: dense tree canopy of stylized clustered leaves, overlapping leaf clumps with highlighted tops and darker gaps, vivid green.",
+      "contraste": 0.26
+    },
+    {
+      "id": "ferro",
+      "tile_m": 0.8,
+      "normal": 2.0,
+      "forca": 1.0,
+      "rugosidade": [
+        0.55,
+        0.2
+      ],
+      "prompt": "Subject: hammered wrought iron plate with subtle dents, faint rust spots and worn edges, dark grey metal.",
+      "contraste": 0.16
+    }
+  ],
+  "celulas": {
+    "3,2": "reboco",
+    "9,3": "viga",
+    "5,3": "viga",
+    "11,3": "tabuas",
+    "3,3": "telha",
+    "1,3": "telha",
+    "7,3": "folhagem",
+    "15,3": "pedra",
+    "0,3": "pedra",
+    "5,2": "ferro"
+  },
+  "paletas": {
+    "pedra": {
+      "3,2": "pedra",
+      "9,3": "pedra"
+    },
+    "pedra_azul": {
+      "3,2": "pedra",
+      "9,3": "pedra"
+    },
+    "pedra_escura": {
+      "3,2": "pedra"
+    }
+  },
+  "chao": [
+    {
+      "set": "ground",
+      "normal": 3.0,
+      "rugosidade": [
+        0.95,
+        0.05
+      ],
+      "prompt": "Subject: top-down view of a lush meadow, short stylized grass blades in clumps with tiny clover and a few small flowers, natural green."
+    },
+    {
+      "set": "cobble_wet",
+      "normal": 5.5,
+      "rugosidade": [
+        0.75,
+        0.2
+      ],
+      "prompt": "Subject: top-down view of a medieval cobblestone street, rounded irregular grey stones of varied sizes tightly packed with dark gaps of dirt between them."
+    }
+  ],
+  "normal_jogo": 1.6,
+  "atlas": {
+    "dungeon": {
+      "arquivo": "dungeon_texture.png",
+      "_doc": "Regiões do atlas KayKit Dungeon (x0, y0, x1, y1 em pixels, origem no topo) medidas pelos UVs dos modelos usados: pedra = muralha, pilares, colunas, portão; madeira = bancos, barris, mesas, caixotes.",
+      "regioes": [
+        {
+          "rect": [
+            128,
+            0,
+            256,
+            256
+          ],
+          "camada": "pedra"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            640,
+            256
+          ],
+          "camada": "viga"
+        }
+      ]
+    }
+  }
+}

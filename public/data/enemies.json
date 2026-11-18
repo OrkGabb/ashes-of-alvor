@@ -1,0 +1,278 @@
+{
+  "versao": 1,
+  "_doc": "Fonte única dos tipos de inimigo. Cliente (public/js/enemies.js) lê atributos, visual e IA; servidor (jogo.py, ação abater) lê nome, recompensa, respawn e treino. Pontos de spawn ficam em tools/zones/*.py e saem em city.json como enemySpawns.",
+  "inimigos": {
+    "javali": {
+      "nome": "Javali Selvagem",
+      "modelo": {
+        "tipo": "glb",
+        "url": "./assets/kits/pets/animal-hog.glb",
+        "escala": 1.0
+      },
+      "vida": 40,
+      "dano": 8,
+      "velocidade": {
+        "patrulha": 1.6,
+        "perseguicao": 5.2
+      },
+      "raio": 0.55,
+      "altura": 0.9,
+      "visao": 11,
+      "desiste": 22,
+      "alcance_ataque": 1.5,
+      "telegrafo": 0.55,
+      "recarga": 1.6,
+      "knockback_resist": 0.2,
+      "respawn": 60,
+      "recompensa": {
+        "cobre": [
+          1,
+          3
+        ],
+        "drops": [
+          {
+            "item": "presa_javali",
+            "chance": 0.6,
+            "qtd": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "slime": {
+      "nome": "Slime do Ribeirão",
+      "modelo": {
+        "tipo": "procedural",
+        "forma": "slime",
+        "cor": "#5fd8c0",
+        "escala": 0.9
+      },
+      "vida": 28,
+      "dano": 6,
+      "velocidade": {
+        "patrulha": 1.0,
+        "perseguicao": 3.2
+      },
+      "raio": 0.5,
+      "altura": 0.8,
+      "visao": 9,
+      "desiste": 16,
+      "alcance_ataque": 1.3,
+      "telegrafo": 0.7,
+      "recarga": 1.8,
+      "knockback_resist": 0.0,
+      "respawn": 45,
+      "recompensa": {
+        "cobre": [
+          0,
+          2
+        ],
+        "drops": [
+          {
+            "item": "essencia_slime",
+            "chance": 0.75,
+            "qtd": [
+              1,
+              2
+            ]
+          },
+          {
+            "item": "minerio_alvor",
+            "chance": 0.05,
+            "qtd": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "lobo": {
+      "nome": "Lobo Cinzento",
+      "modelo": {
+        "tipo": "glb",
+        "url": "./assets/kits/pets/animal-dog.glb",
+        "escala": 1.15,
+        "tint": "#7d8590"
+      },
+      "vida": 55,
+      "dano": 11,
+      "velocidade": {
+        "patrulha": 2.0,
+        "perseguicao": 6.0
+      },
+      "raio": 0.55,
+      "altura": 0.95,
+      "visao": 14,
+      "desiste": 26,
+      "alcance_ataque": 1.6,
+      "telegrafo": 0.45,
+      "recarga": 1.3,
+      "knockback_resist": 0.25,
+      "respawn": 75,
+      "recompensa": {
+        "cobre": [
+          2,
+          4
+        ],
+        "drops": [
+          {
+            "item": "pelagem_lobo",
+            "chance": 0.55,
+            "qtd": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "esqueleto": {
+      "nome": "Esqueleto Errante",
+      "modelo": {
+        "tipo": "personagem",
+        "corpo": "Knight",
+        "escala": 0.8,
+        "recolor": {
+          "1,1": "#d8d2bf",
+          "0,1": "#b9b29c",
+          "3,2": "#5c564a",
+          "1,0": "#e6e0cc"
+        },
+        "ocultar": [],
+        "arma": "./assets/kits/dungeon/sword_shield_broken.gltf"
+      },
+      "vida": 70,
+      "dano": 13,
+      "velocidade": {
+        "patrulha": 1.3,
+        "perseguicao": 3.6
+      },
+      "raio": 0.4,
+      "altura": 1.75,
+      "visao": 13,
+      "desiste": 24,
+      "alcance_ataque": 1.9,
+      "telegrafo": 0.7,
+      "recarga": 1.9,
+      "knockback_resist": 0.35,
+      "respawn": 90,
+      "recompensa": {
+        "cobre": [
+          3,
+          6
+        ],
+        "drops": [
+          {
+            "item": "po_ossos",
+            "chance": 0.65,
+            "qtd": [
+              1,
+              2
+            ]
+          },
+          {
+            "item": "estilhaco_runa",
+            "chance": 0.15,
+            "qtd": [
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "guardiao": {
+      "nome": "Guardião Rúnico",
+      "elite": true,
+      "modelo": {
+        "tipo": "procedural",
+        "forma": "golem_runico",
+        "cor": "#5b6470",
+        "emissivo": "#46e8ff",
+        "escala": 1.7
+      },
+      "vida": 320,
+      "dano": 22,
+      "velocidade": {
+        "patrulha": 1.1,
+        "perseguicao": 3.0
+      },
+      "raio": 0.95,
+      "altura": 3.0,
+      "visao": 15,
+      "desiste": 30,
+      "alcance_ataque": 2.6,
+      "telegrafo": 1.0,
+      "recarga": 2.4,
+      "knockback_resist": 0.85,
+      "respawn": 300,
+      "recompensa": {
+        "cobre": [
+          18,
+          30
+        ],
+        "drops": [
+          {
+            "item": "nucleo_runico",
+            "chance": 1.0,
+            "qtd": [
+              1,
+              1
+            ]
+          },
+          {
+            "item": "estilhaco_runa",
+            "chance": 0.8,
+            "qtd": [
+              1,
+              3
+            ]
+          },
+          {
+            "item": "minerio_alvor",
+            "chance": 0.5,
+            "qtd": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    },
+    "boneco": {
+      "nome": "Boneco de Treino",
+      "treino": true,
+      "modelo": {
+        "tipo": "procedural",
+        "forma": "boneco_treino",
+        "cor": "#a4794a",
+        "escala": 1.0
+      },
+      "vida": 500,
+      "dano": 0,
+      "velocidade": {
+        "patrulha": 0,
+        "perseguicao": 0
+      },
+      "raio": 0.45,
+      "altura": 1.8,
+      "visao": 0,
+      "desiste": 0,
+      "alcance_ataque": 0,
+      "telegrafo": 0,
+      "recarga": 0,
+      "knockback_resist": 1.0,
+      "respawn": 2,
+      "recompensa": {
+        "cobre": [
+          0,
+          0
+        ],
+        "drops": []
+      }
+    }
+  }
+}

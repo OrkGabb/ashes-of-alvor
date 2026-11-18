@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+config.ini
+
+# Player saves and session logs, created on first run
+historias/*/memoria.txt
+historias/*/relacao.json
+historias/*/luna/historico.json
+historias/*/luna/relacao.json
+historias/*/luna/relacao.corrompido-*.json
+historias/*/luna/sessao-*.txt
+historias/*/luna/*.bak
+historias/*/*.bak

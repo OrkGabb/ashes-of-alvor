@@ -1,0 +1,69 @@
+{
+  "size_px": 512,
+  "uv_unit": "meter",
+  "sets": {
+    "cobble_wet": {
+      "tile_m": 2.4,
+      "files": {
+        "map": "cobble_wet_diff.png",
+        "normalMap": "cobble_wet_norm.png",
+        "roughnessMap": "cobble_wet_rough.png"
+      },
+      "description": "Calçamento molhado da praça (poças vêm do shader)"
+    },
+    "plaster": {
+      "tile_m": 2.0,
+      "files": {
+        "map": "plaster_diff.png",
+        "normalMap": "plaster_norm.png",
+        "roughnessMap": "plaster_rough.png"
+      },
+      "description": "Reboco de cal neutro, tingido por material"
+    },
+    "timber": {
+      "tile_m": 1.6,
+      "files": {
+        "map": "timber_diff.png",
+        "normalMap": "timber_norm.png",
+        "roughnessMap": "timber_rough.png"
+      },
+      "description": "Vigas de carvalho, veio ao longo de U"
+    },
+    "planks": {
+      "tile_m": 2.0,
+      "files": {
+        "map": "planks_diff.png",
+        "normalMap": "planks_norm.png",
+        "roughnessMap": "planks_rough.png"
+      },
+      "description": "Tábuas de piso, portas e cercas"
+    },
+    "roof_tiles": {
+      "tile_m": 2.0,
+      "files": {
+        "map": "roof_tiles_diff.png",
+        "normalMap": "roof_tiles_norm.png",
+        "roughnessMap": "roof_tiles_rough.png"
+      },
+      "description": "Telhas sobrepostas, tingidas por material"
+    },
+    "stone": {
+      "tile_m": 2.0,
+      "files": {
+        "map": "stone_diff.png",
+        "normalMap": "stone_norm.png",
+        "roughnessMap": "stone_rough.png"
+      },
+      "description": "Alvenaria de pedra em fiadas"
+    },
+    "ground": {
+      "tile_m": 4.0,
+      "files": {
+        "map": "ground_diff.png",
+        "normalMap": "ground_norm.png",
+        "roughnessMap": "ground_rough.png"
+      },
+      "description": "Terra e grama do entorno"
+    }
+  }
+}

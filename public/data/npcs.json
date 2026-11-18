@@ -1,0 +1,307 @@
+{
+  "versao": 1,
+  "_doc": "Fonte única dos NPCs. 'modelo' = corpo KayKit; 'recolor' troca células do atlas (col,linha 0-7 x 0-3) por uma cor mantendo o degradê; 'ocultar' esconde peças/acessórios; rotinas usam nós de navegação da cidade (tools/city_layout.py) e horas do relógio da vila.",
+  "npcs": {
+    "luna": {
+      "nome": "Luna",
+      "titulo": "Cartógrafa & Exploradora",
+      "cor": "#5bc0eb",
+      "modelo": "Rogue",
+      "escala": 0.8,
+      "recolor": { "1,0": "#2c2a3d", "0,1": "#2b3f66", "1,1": "#20345a", "3,2": "#3b2f2a" },
+      "ocultar": ["Knife", "Knife_Offhand", "1H_Crossbow", "2H_Crossbow", "Throwable"],
+      "aparencia": "jovem de 20 anos, cabelo preto-azulado na altura do ombro com franja bagunçada, olhos azul-acinzentados atentos, jaqueta curta de exploradora azul-marinho sobre camisa clara, capa azul-escura, cinto com uma lanterna de cristal azul e um caderno de couro cheio de mapas, sorriso de canto irônico",
+      "cenario_retrato": "balcão de taverna à luz de lareira e lanterna de cristal azul",
+      "persona": "Luna, 20 anos, exploradora de ruínas e cartógrafa autônoma, parceira/companion do jogador. Curiosa, observadora, irônica e direta; fala como uma jovem brasileira real, sem pompa medieval. Tem vida e opinião própria, provoca, discorda, não confia de graça. Romance em slow-burn. Segredo (só com muita confiança): achou um fragmento de mapa de uma câmara selada sob o Marco da Estrada Velha.",
+      "falas": ["Ei, Desperto. Ainda vivo?", "Essa rua não está no meu mapa... ainda.", "Se for me seguir, pelo menos não pisa nas poças."],
+      "casa": "inn_luna",
+      "rotina": [
+        { "to": "inn_luna", "anim": "sentar", "dur": [40, 70], "label": "rabiscando mapas no balcão", "horas": [18, 2] },
+        { "to": "inn_lareira", "anim": "idle", "dur": [15, 25], "label": "se aquecendo na lareira", "horas": [18, 2] },
+        { "to": "marco", "anim": "trabalhar", "dur": [25, 40], "label": "estudando o Marco de Alvor", "horas": [7, 24] },
+        { "to": "guilda_quadro", "anim": "idle", "dur": [20, 30], "label": "lendo o quadro de contratos", "horas": [8, 18] },
+        { "to": "jardim_fonte", "anim": "trabalhar", "dur": [25, 35], "label": "desenhando o jardim do templo", "horas": [8, 18] },
+        { "to": "mercado_2", "anim": "idle", "dur": [15, 25], "label": "olhando as barracas do mercado", "horas": [9, 17] },
+        { "to": "ruinas_altar", "anim": "trabalhar", "dur": [30, 50], "label": "decifrando as runas nas Ruínas do Marco Antigo", "horas": [10, 17] },
+        { "to": "inn_luna", "anim": "sentar", "dur": [60, 120], "label": "dormindo debruçada no balcão", "horas": [2, 7] }
+      ]
+    },
+    "bram": {
+      "nome": "Bram",
+      "titulo": "Taverneiro da Lanterna Torta",
+      "cor": "#e69f45",
+      "modelo": "Barbarian",
+      "escala": 0.86,
+      "recolor": { "1,1": "#3d4f35", "0,1": "#4a5a3a", "7,0": "#6b4a2f" },
+      "ocultar": ["Barbarian_Hat", "Barbarian_Cape", "1H_Axe", "1H_Axe_Offhand", "2H_Axe", "Barbarian_Round_Shield"],
+      "aparencia": "homem de 44 anos, ombros largos, barba curta grisalha e cabelo grisalho curto, cicatriz atravessando a sobrancelha esquerda, olhar calmo e cansado, túnica verde-escura com avental de couro, um pano de prato no ombro, segurando um caneco de estanho",
+      "cenario_retrato": "atrás do balcão de madeira de uma taverna aconchegante com barris e lareira",
+      "persona": "Bram, 44 anos, dono e taverneiro da Estalagem Lanterna Torta. Ex-batedor veterano da fronteira, pragmático, calmo, observador, humor seco. Serve ensopado e sidra, conhece os boatos da capital, implica de leve com a Luna. Negocia em cobres, aceita trabalho e favores.",
+      "falas": ["Porta aberta entra vento.", "Ensopado só sai com cobre ou suor.", "Já vi Desperto pior que você."],
+      "casa": "inn_bram",
+      "loja": { "titulo": "Balcão da Lanterna Torta", "itens": ["caneca_sidra", "ensopado"] },
+      "rotina": [
+        { "to": "inn_bram", "anim": "trabalhar", "dur": [40, 70], "label": "secando canecos no balcão" },
+        { "to": "inn_barris", "anim": "pegar", "dur": [10, 16], "label": "conferindo os barris de trás" },
+        { "to": "inn_bram", "anim": "idle", "dur": [25, 40], "label": "atento atrás do balcão" },
+        { "to": "inn_lareira", "anim": "trabalhar", "dur": [12, 18], "label": "atiçando a lareira" },
+        { "to": "inn_kegs", "anim": "pegar", "dur": [10, 16], "label": "trocando o barril de cerveja" },
+        { "to": "inn_porta", "anim": "idle", "dur": [10, 16], "label": "espiando a rua da porta", "horas": [18, 6] }
+      ]
+    },
+    "maren": {
+      "nome": "Maren",
+      "titulo": "Recepcionista da Guilda",
+      "cor": "#6f9cf0",
+      "modelo": "Rogue",
+      "escala": 0.8,
+      "recolor": { "1,0": "#8a5a2e", "0,1": "#f1ece2", "1,1": "#2f5aa8", "3,2": "#2b3550" },
+      "ocultar": ["Knife", "Knife_Offhand", "1H_Crossbow", "2H_Crossbow", "Throwable"],
+      "aparencia": "mulher de 27 anos, cabelo castanho-mel preso num coque com mechas soltas, óculos finos de aro dourado, uniforme da Guilda dos Aventureiros em azul e branco com broche de bronze, postura impecável e sorriso profissional que esconde impaciência",
+      "cenario_retrato": "balcão de recepção de uma guilda de aventureiros de anime com quadro de contratos ao fundo",
+      "persona": "Maren, 27 anos, recepcionista veterana da Guilda dos Aventureiros de Cinzas de Alvor. Prática, organizada, educada no protocolo mas sem paciência para enrolação; conhece todos os aventureiros e contratos. Registra novos aventureiros (taxa de 10 cobres) e cuida do quadro de contratos.",
+      "falas": [
+        "Bem-vindo à Guilda. Senha, nome ou problema?",
+        "Contratos do quadro só com cartão de registro.",
+        "Sem cartão, sem contrato. Regras são regras."
+      ],
+      "casa": "guilda_maren",
+      "rotina": [
+        { "to": "guilda_maren", "anim": "trabalhar", "dur": [60, 120], "label": "organizando registros no balcão", "horas": [7, 21] },
+        { "to": "guilda_quadro", "anim": "trabalhar", "dur": [15, 25], "label": "pregando contratos no quadro", "horas": [7, 21] },
+        { "to": "inn_mesa_l", "anim": "sentar", "dur": [60, 90], "label": "jantando na Lanterna Torta", "horas": [21, 24] },
+        { "to": "guilda_maren", "anim": "idle", "dur": [60, 120], "label": "fechando o livro de registros", "horas": [0, 7] }
+      ]
+    },
+    "darian": {
+      "nome": "Velho Darian",
+      "titulo": "Relojoeiro & Avaliador de Relíquias",
+      "cor": "#c9a86a",
+      "modelo": "Mage",
+      "escala": 0.78,
+      "recolor": { "1,0": "#d9d6d0", "0,1": "#5a2b3a", "1,1": "#4a3020", "2,1": "#6b5536" },
+      "ocultar": ["Mage_Cape", "Spellbook", "Spellbook_open", "1H_Wand", "2H_Staff"],
+      "aparencia": "senhor de uns 70 anos, cabelo e cavanhaque brancos, monóculo de latão com lente de cristal, chapéu pontudo marrom gasto, robe bordô de mangas largas com bolsos cheios de engrenagens, olhar esperto de comerciante",
+      "cenario_retrato": "oficina apertada cheia de relógios, lentes e relíquias antigas à luz de velas",
+      "persona": "Velho Darian, uns 70 anos, relojoeiro e avaliador de relíquias. Compra achados da Luna e de aventureiros, sempre tenta pechinchar, fala devagar e cheio de histórias, desconfia de Despertos mas adora objetos de outros mundos.",
+      "falas": ["Hmm... vale menos do que você acha.", "Cuidado com essa engrenagem, rapaz.", "Relíquia de outro mundo? Deixa eu ver."],
+      "casa": "darian",
+      "rotina": [
+        { "to": "darian", "anim": "trabalhar", "dur": [60, 120], "label": "consertando um relógio na bancada", "horas": [8, 19] },
+        { "to": "forja", "anim": "idle", "dur": [15, 25], "label": "discutindo preço com o Torvin", "horas": [10, 17] },
+        { "to": "inn_mesa_o", "anim": "sentar", "dur": [60, 100], "label": "contando histórias na taverna", "horas": [19, 23] },
+        { "to": "darian", "anim": "idle", "dur": [60, 120], "label": "cochilando na oficina", "horas": [23, 8] }
+      ]
+    },
+    "sera": {
+      "nome": "Sera",
+      "titulo": "Alquimista da Botica",
+      "cor": "#6fd1a8",
+      "modelo": "Mage",
+      "escala": 0.78,
+      "recolor": { "1,0": "#6fd1a8", "0,1": "#6b4a32", "1,1": "#efe3c8", "2,1": "#6b4a32" },
+      "ocultar": ["Mage_Hat", "Mage_Cape", "Spellbook", "Spellbook_open", "1H_Wand", "2H_Staff"],
+      "aparencia": "garota de 22 anos, cabelo verde-menta preso num rabo de cavalo bagunçado, óculos redondos, blusa creme de mangas bufantes, avental de couro marrom cheio de frascos e ferramentas, sorriso animado de cientista",
+      "cenario_retrato": "botica de alquimia com prateleiras de frascos brilhantes coloridos",
+      "persona": "Sera, 22 anos, alquimista dona da Botica. Animada, fala rápido e se empolga explicando receitas, meio desastrada, adora ingredientes raros. Vende chás e poções; paga por Erva-de-Brasa do Jardim do Templo.",
+      "falas": ["Não toca no frasco roxo! ...Esse pode.", "Erva-de-Brasa! Você viu alguma?", "Chá quente pra chuva, é por conta da ciência."],
+      "casa": "botica",
+      "loja": { "titulo": "Botica da Sera", "itens": ["cha_brasa", "pocao_vigor", "pocao_vida", "pocao_mana"] },
+      "rotina": [
+        { "to": "botica", "anim": "conjurar", "dur": [40, 80], "label": "preparando uma poção borbulhante", "horas": [7, 20] },
+        { "to": "botica", "anim": "trabalhar", "dur": [30, 50], "label": "rotulando frascos no balcão", "horas": [7, 20] },
+        { "to": "jardim_s", "anim": "pegar", "dur": [15, 25], "label": "colhendo ervas no jardim", "horas": [8, 17] },
+        { "to": "inn_mesa_l", "anim": "sentar", "dur": [40, 80], "label": "tomando sidra na taverna", "horas": [20, 23] },
+        { "to": "botica", "anim": "idle", "dur": [60, 120], "label": "lendo um tratado de alquimia", "horas": [23, 7] }
+      ]
+    },
+    "rosa": {
+      "nome": "Dona Rosa",
+      "titulo": "Padeira",
+      "cor": "#f08aa0",
+      "modelo": "Rogue",
+      "escala": 0.82,
+      "recolor": { "1,0": "#7a2a22", "0,1": "#f2e6cf", "1,1": "#c95a6a", "3,2": "#5a3a2a" },
+      "ocultar": ["Rogue_Cape", "Knife", "Knife_Offhand", "1H_Crossbow", "2H_Crossbow", "Throwable"],
+      "aparencia": "mulher de 40 anos, cabelo ruivo-escuro preso com lenço vermelho, bochechas coradas, avental branco com farinha, mangas arregaçadas, sorriso enorme e acolhedor, segurando uma cesta de pães",
+      "cenario_retrato": "padaria de vila com fornos de pedra e pães dourados nas prateleiras",
+      "persona": "Dona Rosa, 40 anos, padeira e mãe da Tilly. Calorosa, falante, maternal e fofoqueira; sabe de tudo que acontece no mercado. Vende pães e pãezinhos de mel; precisa de ajuda para levar pães à guarda.",
+      "falas": ["Pão quentinho, saindo agora!", "Viu a Tilly por aí? Essa menina...", "Come alguma coisa, criatura, tá pálido!"],
+      "casa": "padaria",
+      "loja": { "titulo": "Padaria da Rosa", "itens": ["pao_centeio", "pao_mel", "maca"] },
+      "rotina": [
+        { "to": "padaria", "anim": "trabalhar", "dur": [50, 90], "label": "vendendo pães no balcão", "horas": [5, 19] },
+        { "to": "padaria_forno", "anim": "pegar", "dur": [15, 25], "label": "tirando pães do forno", "horas": [5, 19] },
+        { "to": "mercado_1", "anim": "idle", "dur": [15, 25], "label": "fofocando com as vizinhas", "horas": [9, 18] },
+        { "to": "casa_rosa", "anim": "idle", "dur": [120, 240], "label": "em casa com a Tilly", "horas": [19, 5] }
+      ]
+    },
+    "tilly": {
+      "nome": "Tilly",
+      "titulo": "Filha da Padeira",
+      "cor": "#ffc66a",
+      "modelo": "Rogue",
+      "escala": 0.56,
+      "recolor": { "1,0": "#e8c66a", "0,1": "#e27aa0", "1,1": "#f3a6c0", "3,2": "#7a4a5a" },
+      "ocultar": ["Rogue_Cape", "Knife", "Knife_Offhand", "1H_Crossbow", "2H_Crossbow", "Throwable"],
+      "aparencia": "garotinha fofa em estilo chibi, cabelo loiro em duas marias-chiquinhas com fitas cor-de-rosa, vestido rosa com aventalzinho sujo de farinha, olhos grandes e expressivos, expressão preocupada e determinada, segurando uma coleira de gato com sininho",
+      "cenario_retrato": "rua de pedra molhada de uma cidade medieval de anime ao entardecer",
+      "persona": "Tilly, 9 anos, filha da Dona Rosa. Criança esperta, teimosa, chora fácil mas logo se anima; fala como criança brasileira. Perdeu o gato Bolinho, laranja e gorducho, que fugiu com medo da chuva.",
+      "falas": ["Moço, você viu um gato laranja?", "O Bolinho tem medo de trovão...", "Minha mãe faz o melhor pão do mundo!"],
+      "casa": "praca_so",
+      "rotina": [
+        { "to": "praca_so", "anim": "idle", "dur": [30, 50], "label": "procurando o gato pela praça", "horas": [7, 19] },
+        { "to": "mercado_1", "anim": "idle", "dur": [20, 30], "label": "chamando 'Bolinho!' no mercado", "horas": [7, 19] },
+        { "to": "jardim_banco", "anim": "sentar", "dur": [25, 40], "label": "sentada no banco do jardim", "horas": [8, 18] },
+        { "to": "casa_rosa", "anim": "idle", "dur": [120, 240], "label": "em casa, dormindo", "horas": [19, 7] }
+      ]
+    },
+    "torvin": {
+      "nome": "Torvin",
+      "titulo": "Ferreiro Anão",
+      "cor": "#e0703a",
+      "modelo": "Barbarian",
+      "escala": 0.66,
+      "escala_largura": 1.22,
+      "recolor": { "1,0": "#b5562b", "1,1": "#3a3a3f", "0,1": "#4b3b30", "7,0": "#5a3a24" },
+      "ocultar": ["Barbarian_Hat", "Barbarian_Cape", "1H_Axe_Offhand", "2H_Axe", "Barbarian_Round_Shield"],
+      "aparencia": "anão ferreiro robusto de idade indefinida, barba ruiva enorme trançada com anéis de ferro, braços fortes cheios de fuligem, avental de couro de forja chamuscado, óculos de proteção na testa, martelo na mão",
+      "cenario_retrato": "forja com brasas alaranjadas, bigorna e faíscas voando",
+      "persona": "Torvin, ferreiro anão, resmungão, orgulhoso do ofício, coração mole escondido debaixo da fuligem. Odeia pechincha (principalmente do Darian), respeita quem trabalha duro. Consertou a lente do Darian.",
+      "falas": ["Fala logo, o ferro esfria.", "Martelo não erra. Gente erra.", "Darian ainda me deve três peças de prata."],
+      "casa": "forja",
+      "rotina": [
+        { "to": "forja_bigorna", "anim": "forjar", "dur": [40, 80], "label": "martelando ferro na bigorna", "horas": [6, 19] },
+        { "to": "forja", "anim": "trabalhar", "dur": [20, 30], "label": "atiçando a forja", "horas": [6, 19] },
+        { "to": "inn_mesa_o", "anim": "sentar", "dur": [60, 120], "label": "bebendo na Lanterna Torta", "horas": [19, 24] },
+        { "to": "forja", "anim": "idle", "dur": [120, 240], "label": "roncando ao lado da forja", "horas": [0, 6] }
+      ]
+    },
+    "aldric": {
+      "nome": "Capitão Aldric",
+      "titulo": "Capitão da Guarda do Portão Sul",
+      "cor": "#ee6264",
+      "modelo": "Knight",
+      "escala": 0.84,
+      "ocultar": ["Knight_Helmet", "1H_Sword_Offhand", "2H_Sword", "Badge_Shield", "Rectangle_Shield", "Spike_Shield", "Round_Shield"],
+      "aparencia": "homem de 35 anos, cabelo loiro curto e queixo quadrado, armadura de placas prateada com capa vermelha e o brasão da Marca de Alvor, olhar sério mas justo, gotas de chuva na armadura",
+      "cenario_retrato": "portão de muralha de pedra à noite, tochas e chuva",
+      "persona": "Capitão Aldric, 35 anos, comanda a guarda do Portão Sul. Disciplinado, justo, desconfia de Despertos por protocolo mas respeita quem ajuda a cidade. Não deixa ninguém sair pela estrada da Mata Cinzenta à noite.",
+      "falas": ["Portão fechado depois do anoitecer.", "Circulando, cidadão.", "A Mata Cinzenta não é passeio."],
+      "casa": "portao_aldric",
+      "rotina": [
+        { "to": "portao_aldric", "anim": "vigiar", "dur": [60, 120], "label": "vigiando a estrada da Mata Cinzenta" },
+        { "to": "portao_guarita", "anim": "idle", "dur": [20, 30], "label": "conferindo a guarita" },
+        { "to": "mercado_s", "anim": "idle", "dur": [15, 25], "label": "patrulhando o fim do mercado", "horas": [7, 20] },
+        { "to": "estrada_sul_1", "anim": "vigiar", "dur": [20, 35], "label": "inspecionando a Estrada Velha ao sul", "horas": [8, 17] }
+      ]
+    },
+    "celeste": {
+      "nome": "Irmã Celeste",
+      "titulo": "Sacerdotisa de Aurélia",
+      "cor": "#d8b45a",
+      "modelo": "Mage",
+      "escala": 0.78,
+      "recolor": { "1,0": "#c9c3e6", "0,1": "#f2f0ea", "1,1": "#e6e1d6", "2,1": "#d8b45a" },
+      "ocultar": ["Mage_Hat", "Spellbook_open", "1H_Wand", "2H_Staff"],
+      "aparencia": "jovem sacerdotisa de 24 anos, longo cabelo prateado-lavanda, olhos dourados serenos, véu branco e túnica branca com bordados dourados de sol, colar com símbolo da deusa Aurélia, segurando um livro de orações",
+      "cenario_retrato": "escadaria de um templo branco com vitrais dourados e velas",
+      "persona": "Irmã Celeste, 24 anos, sacerdotisa do Templo de Aurélia, deusa da aurora. Serena, gentil, um pouco ingênua e curiosa sobre Despertos (o templo acredita que eles são 'convocados' por Aurélia). Cuida do Jardim do Templo e oferece bênçãos e conselhos.",
+      "falas": ["Que a aurora te guie, viajante.", "Os Despertos chegam quando o mundo precisa.", "O jardim fica lindo na chuva, não acha?"],
+      "casa": "templo_celeste",
+      "rotina": [
+        { "to": "templo_celeste", "anim": "conjurar", "dur": [40, 80], "label": "rezando diante do altar da catedral" },
+        { "to": "jardim_fonte", "anim": "idle", "dur": [20, 35], "label": "cuidando da fonte do jardim", "horas": [6, 20] },
+        { "to": "jardim_n", "anim": "pegar", "dur": [15, 25], "label": "regando as flores", "horas": [6, 20] }
+      ]
+    }
+  },
+  "figurantes": {
+    "_doc": "Moradores sem retrato: andam pela cidade com falas curtas (sem chamar o narrador).",
+    "tipos": [
+      {
+        "id": "guarda",
+        "nome": "Guarda",
+        "modelo": "Knight",
+        "escala": 0.84,
+        "ocultar": ["1H_Sword_Offhand", "Badge_Shield", "Rectangle_Shield", "Spike_Shield", "Round_Shield", "2H_Sword"],
+        "anim_andar": "Walking_B",
+        "falas": ["Circulando.", "Noite tranquila... por enquanto.", "Desperto, né? Dá pra ver pelo sapato."]
+      },
+      {
+        "id": "aventureiro",
+        "nome": "Aventureiro",
+        "modelo": "Rogue_Hooded",
+        "escala": 0.8,
+        "ocultar": ["Knife_Offhand", "2H_Crossbow", "Throwable"],
+        "falas": ["Contrato de goblin de novo? Passo.", "A Maren me olhou feio hoje.", "Já viu o Marco brilhar? Arrepia."]
+      },
+      {
+        "id": "maga",
+        "nome": "Maga Viajante",
+        "modelo": "Mage",
+        "escala": 0.78,
+        "recolor": { "0,1": "#2f6b5a", "1,1": "#1f4a40" },
+        "ocultar": ["Mage_Cape", "Spellbook_open", "1H_Wand"],
+        "falas": ["O mana daqui é instável.", "Botica da Sera? Melhor da fronteira.", "Chuva boa pra estudar."]
+      },
+      {
+        "id": "mercador",
+        "nome": "Mercador",
+        "modelo": "Barbarian",
+        "escala": 0.8,
+        "recolor": { "1,1": "#7a4a2a", "0,1": "#a8743a" },
+        "ocultar": ["Barbarian_Hat", "1H_Axe", "1H_Axe_Offhand", "2H_Axe", "Barbarian_Round_Shield"],
+        "falas": ["Maçã fresca, só um cobre!", "Caravana atrasou de novo.", "Tem cobre? Então tem negócio."]
+      },
+      {
+        "id": "moradora",
+        "nome": "Moradora",
+        "modelo": "Rogue",
+        "escala": 0.78,
+        "recolor": { "1,0": "#5a3a2a", "0,1": "#8a6aa8", "1,1": "#6a4a88" },
+        "ocultar": ["Rogue_Cape", "Knife", "Knife_Offhand", "1H_Crossbow", "2H_Crossbow", "Throwable"],
+        "falas": ["Que chuva, hein?", "Dizem que a Luna acha cada coisa nas ruínas...", "Boa noite, forasteiro."]
+      }
+    ],
+    "rotas": [
+      { "tipo": "guarda", "pontos": ["portao_dentro", "mercado_3", "praca_s", "praca_l", "rua_leste", "praca_n", "praca_o", "mercado_1"] },
+      { "tipo": "guarda", "pontos": ["paco_portao", "praca_n", "praca_no", "rua_oeste", "jardim_n", "praca_o"] },
+      {
+        "tipo": "aventureiro",
+        "pontos": ["guilda_porta", "guilda_quadro", "guilda_porta", "praca_l", "inn_porta", "inn_centro", "inn_porta", "praca_ne"]
+      },
+      { "tipo": "maga", "pontos": ["botica", "mercado_2", "praca_so", "marco", "templo_escada", "jardim_fonte", "praca_o"] },
+      { "tipo": "mercador", "pontos": ["mercado_2", "mercado_4", "mercado_s", "mercado_3", "mercado_1", "praca_se"] },
+      { "tipo": "moradora", "pontos": ["poco", "rua_oeste", "praca_no", "padaria", "mercado_1", "praca_so", "poco"] },
+      { "tipo": "aventureiro", "pontos": ["inn_mesa_l", "inn_centro", "inn_porta", "marco", "guilda_porta", "guilda_dentro"] },
+      { "tipo": "moradora", "pontos": ["rua_leste", "praca_ne", "marco", "praca_se", "forja", "mercado_3", "rua_leste"] },
+      {
+        "tipo": "guarda",
+        "pontos": ["castelo_portao_dentro", "castelo_patio", "castelo_paco", "castelo_quartel", "castelo_sino", "castelo_portao_dentro", "castelo_portao_fora"]
+      },
+      {
+        "tipo": "guarda",
+        "pontos": [
+          "paco_portao",
+          "portao_norte_fora",
+          "estrada_1",
+          "campo_treino",
+          "campo_estabulo",
+          "estrada_2",
+          "castelo_portao_fora",
+          "estrada_1",
+          "portao_norte_fora"
+        ]
+      },
+      { "tipo": "mercador", "pontos": ["praca_mercado", "praca_barraca_n", "marco", "praca_se", "praca_mercado"] },
+      { "tipo": "moradora", "pontos": ["largo_poco", "paco_portao", "estrada_1", "campo_moinho", "estrada_1", "paco_portao"] },
+      { "tipo": "guarda", "pontos": ["portao_dentro", "portao_sul_vao", "estrada_sul_1", "estrada_sul_2", "encruzilhada_sul", "estrada_sul_2", "estrada_sul_1", "portao_sul_vao"] },
+      { "tipo": "aventureiro", "pontos": ["guilda_porta", "praca_s", "mercado_s", "portao_sul_vao", "encruzilhada_sul", "acampamento_entrada", "acampamento_fogo", "ribeirao_ponte", "moinho_agua_frente", "ribeirao_ponte", "acampamento_entrada", "encruzilhada_sul", "portao_sul_vao", "mercado_s", "praca_s"] },
+      { "tipo": "aventureiro", "pontos": ["portao_sul_vao", "estrada_sul_1", "estrada_sul_2", "encruzilhada_sul", "estrada_sul_3", "encruzilhada_sul", "acampamento_entrada", "acampamento_norte", "acampamento_fogo", "acampamento_sul", "acampamento_entrada", "encruzilhada_sul", "estrada_sul_2"] },
+      { "tipo": "maga", "pontos": ["acampamento_fogo", "acampamento_leste", "ribeirao_ponte", "ribeirao_ponte_leste", "ribeirao_ponte", "acampamento_sul", "acampamento_fogo", "acampamento_norte"] },
+      { "tipo": "aventureiro", "pontos": ["encruzilhada_sul", "mata_entrada", "encruzilhada_sul", "estrada_sul_3", "encruzilhada_sul", "acampamento_entrada", "acampamento_norte", "acampamento_entrada"] },
+      { "tipo": "guarda", "pontos": ["estrada_sul_1", "estrada_sul_2", "encruzilhada_sul", "estrada_sul_3", "encruzilhada_sul", "acampamento_entrada", "encruzilhada_sul", "estrada_sul_2"] }
+    ]
+  }
+}
